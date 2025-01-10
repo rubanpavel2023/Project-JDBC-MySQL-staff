@@ -64,4 +64,5 @@ public class Employee {
     public void setCompanyType(String companyType) {
         this.companyType = companyType;
     }
+
 }

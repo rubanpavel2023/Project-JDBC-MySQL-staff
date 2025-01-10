@@ -20,4 +20,5 @@ public class Company {
     public void setNameCompany(String nameCompany) {
         this.nameCompany = nameCompany;
     }
+
 }
