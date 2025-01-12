@@ -19,8 +19,9 @@ public class EmployeeReadRepository {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, idEmployee);
             ResultSet rs = pstmt.executeQuery();
+            Employee employee = null;
             if (rs.next()) {
-                Employee employee = new Employee();
+                employee = new Employee();
                 employee.setIdEmployee(rs.getInt("id_Employee"));
                 employee.setFirstName(rs.getString("first_Name"));
                 employee.setLastName(rs.getString("last_Name"));
@@ -32,18 +33,17 @@ public class EmployeeReadRepository {
             } else {
                 System.out.println("No employee found with ID: " + idEmployee);
             }
+            return Optional.ofNullable(employee);
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
-        return Optional.empty();
     }
 
     public Optional<List<Employee>> readEmployeesByLastNameStartsWith(char initial) {
         List<Employee> employees = new ArrayList<>();
         String sql = "SELECT * FROM " + Constants.TABLE_EMPLOYEES + " WHERE last_Name LIKE ?";
         try (Connection conn = DBConn.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            assert conn != null;
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, initial + "%");
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -63,6 +63,3 @@ public class EmployeeReadRepository {
         return employees.isEmpty() ? Optional.empty() : Optional.of(employees);
     }
 }
-
-
-
