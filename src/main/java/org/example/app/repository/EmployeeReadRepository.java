@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class EmployeeReadRepository {
 
+public class EmployeeReadRepository {
     public Optional<Employee> readEmployee(int idEmployee) {
         String sql = "SELECT * FROM " + Constants.TABLE_EMPLOYEES + " WHERE id_Employee = ?";
         try (Connection conn = DBConn.connect()) {
@@ -69,9 +69,12 @@ public class EmployeeReadRepository {
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
-        return employees.isEmpty() ? Optional.empty() : Optional.of(employees);
+        return Optional.ofNullable(employees.isEmpty() ? null : employees);
+        //return employees.isEmpty() ? Optional.empty() : Optional.of(employees);
     }
+
 }
+
 
 
 
