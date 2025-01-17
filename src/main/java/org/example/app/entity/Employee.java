@@ -1,5 +1,7 @@
 package org.example.app.entity;
 
+import java.util.Objects;
+
 public class Employee {
     private int idEmployee;
     private String firstName;
@@ -65,4 +67,15 @@ public class Employee {
         this.companyType = companyType;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee employee)) return false;
+        return getIdCompany() == employee.getIdCompany() && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getTelephone(), employee.getTelephone()) && Objects.equals(getEmail(), employee.getEmail()) && Objects.equals(getCompanyType(), employee.getCompanyType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName(), getTelephone(), getEmail(), getIdCompany(), getCompanyType());
+    }
 }
