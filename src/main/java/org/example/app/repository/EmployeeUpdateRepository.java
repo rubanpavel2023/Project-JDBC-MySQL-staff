@@ -49,6 +49,9 @@ public class EmployeeUpdateRepository {
     }
 
     public boolean updateEmployee(Employee employee) {
+        if (employee == null){
+            return false;
+        }
         String sql = "UPDATE " + Constants.TABLE_EMPLOYEES +
                 " SET first_Name = ?, last_Name = ?, " +
                 "telephone = ?, email = ?, " +
