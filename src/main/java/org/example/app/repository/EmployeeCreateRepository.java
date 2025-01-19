@@ -15,7 +15,9 @@ public class EmployeeCreateRepository {
                 " (first_Name, last_Name, telephone, email, id_Company, company_Type) " +
                 "VALUES(?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConn.connect()) {
-            assert conn != null;
+            if (conn == null) {
+                throw new RuntimeException("Failed to establish database connection");
+            }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, employee.getFirstName());
                 pstmt.setString(2, employee.getLastName());
