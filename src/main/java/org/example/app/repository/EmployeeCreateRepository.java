@@ -9,24 +9,24 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class EmployeeCreateRepository {
-    public String createEmployees(Employee employee) {
+    public String createEmployees(Employee employeeToCreate) {
 
         String sql = "INSERT INTO" + Constants.TABLE_EMPLOYEES +
-                " (first_Name, last_Name, telephone, email, id_Company, company_Type) " +
+                " (first_Name, last_Name, position, email, id_Company, company_Type) " +
                 "VALUES(?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
                 throw new RuntimeException("Failed to establish database connection");
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setString(1, employee.getFirstName());
-                pstmt.setString(2, employee.getLastName());
-                pstmt.setString(3, employee.getTelephone());
-                pstmt.setString(4, employee.getEmail());
-                pstmt.setInt(5, employee.getIdCompany());
-                pstmt.setString(6, employee.getCompanyType());
+                pstmt.setString(1, employeeToCreate.getFirstName());
+                pstmt.setString(2, employeeToCreate.getLastName());
+                pstmt.setString(3, employeeToCreate.getPosition());
+                pstmt.setString(4, employeeToCreate.getEmail());
+                pstmt.setInt(5, employeeToCreate.getIdCompany());
+                pstmt.setString(6, employeeToCreate.getCompanyType());
                 pstmt.executeUpdate();
-                return Constants.DATA_INSERT_MSG;
+                return Constants.DATA_EMPLOYEE_INSERT_MSG;
             }
         } catch (SQLException e) {
             return e.getMessage();

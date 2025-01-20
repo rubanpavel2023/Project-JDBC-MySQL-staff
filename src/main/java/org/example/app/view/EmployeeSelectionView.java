@@ -14,12 +14,12 @@ public class EmployeeSelectionView {
         }
         System.out.println("Select an employee from the list:");
         for (int i = 0; i < employees.size(); i++) {
-            Employee employee = employees.get(i);
-            System.out.println((i + 1) + ". ID: " + employee.getIdEmployee() +
-                    ", Name: " + employee.getFirstName() + " " + employee.getLastName() +
-                    ", Phone: " + employee.getTelephone() +
-                    ", Email: " + employee.getEmail() +
-                    ", Company: " + employee.getCompanyType());
+            Employee selectedEmployee = employees.get(i);
+            System.out.println((i + 1) + ". ID: " + selectedEmployee.getIdEmployee() +
+                    ", Name: " + selectedEmployee.getFirstName() + " " + selectedEmployee.getLastName() +
+                    ", Position: " + selectedEmployee.getPosition() +
+                    ", Email: " + selectedEmployee.getEmail() +
+                    ", Company: " + selectedEmployee.getCompanyType());
         }
         System.out.print("Enter the number of the employee to update: ");
         int choice = scanner.nextInt();

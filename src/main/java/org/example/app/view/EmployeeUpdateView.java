@@ -8,53 +8,52 @@ public class EmployeeUpdateView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static Employee getUpdatedEmployee(Employee originalEmployee) {
-        System.out.println("Updating employee with ID: " + originalEmployee.getIdEmployee());
 
-        Employee updatedEmployee = new Employee();
-        updatedEmployee.setIdEmployee(originalEmployee.getIdEmployee());
+        Employee employeeToUpdate = new Employee();
+        employeeToUpdate.setIdEmployee(originalEmployee.getIdEmployee());
 
         System.out.print("Enter new first name (current: " + originalEmployee.getFirstName() + "): ");
         String firstName = scanner.nextLine();
-        updatedEmployee.setFirstName(firstName.isEmpty() ? originalEmployee.getFirstName() : firstName);
-        System.out.println("New first name: " + updatedEmployee.getFirstName());
+        employeeToUpdate.setFirstName(firstName.isEmpty() ? originalEmployee.getFirstName() : firstName);
+        System.out.println("New first name: " + employeeToUpdate.getFirstName());
 
         System.out.print("Enter new last name (current: " + originalEmployee.getLastName() + "): ");
         String lastName = scanner.nextLine();
-        updatedEmployee.setLastName(lastName.isEmpty() ? originalEmployee.getLastName() : lastName);
-        System.out.println("New last name: " + updatedEmployee.getLastName());
+        employeeToUpdate.setLastName(lastName.isEmpty() ? originalEmployee.getLastName() : lastName);
+        System.out.println("New last name: " + employeeToUpdate.getLastName());
 
-        System.out.print("Enter new telephone (current: " + originalEmployee.getTelephone() + "): ");
+        System.out.print("Enter new position (current: " + originalEmployee.getPosition() + "): ");
         String telephone = scanner.nextLine();
-        updatedEmployee.setTelephone(telephone.isEmpty() ? originalEmployee.getTelephone() : telephone);
-        System.out.println("New telephone: " + updatedEmployee.getTelephone());
+        employeeToUpdate.setPosition(telephone.isEmpty() ? originalEmployee.getPosition() : telephone);
+        System.out.println("New position: " + employeeToUpdate.getPosition());
 
         System.out.print("Enter new email (current: " + originalEmployee.getEmail() + "): ");
         String email = scanner.nextLine();
-        updatedEmployee.setEmail(email.isEmpty() ? originalEmployee.getEmail() : email);
-        System.out.println("New email: " + updatedEmployee.getEmail());
+        employeeToUpdate.setEmail(email.isEmpty() ? originalEmployee.getEmail() : email);
+        System.out.println("New email: " + employeeToUpdate.getEmail());
 
         System.out.print("Enter new company ID (current: " + originalEmployee.getIdCompany() + "): ");
         String idCompanyInput = scanner.nextLine();
-        updatedEmployee.setIdCompany(idCompanyInput.isEmpty() ? originalEmployee.getIdCompany() : Integer.parseInt(idCompanyInput));
-        System.out.println("New company ID: " + updatedEmployee.getIdCompany());
+        employeeToUpdate.setIdCompany(idCompanyInput.isEmpty() ? originalEmployee.getIdCompany() : Integer.parseInt(idCompanyInput));
+        System.out.println("New company ID: " + employeeToUpdate.getIdCompany());
 
         System.out.print("Enter new company type (current: " + originalEmployee.getCompanyType() + "): ");
         String companyType = scanner.nextLine();
-        updatedEmployee.setCompanyType(companyType.isEmpty() ? originalEmployee.getCompanyType() : companyType);
-        System.out.println("New company type: " + updatedEmployee.getCompanyType());
+        employeeToUpdate.setCompanyType(companyType.isEmpty() ? originalEmployee.getCompanyType() : companyType);
+        System.out.println("New company type: " + employeeToUpdate.getCompanyType());
 
-        if (!isEmployeeDataChanged(originalEmployee, updatedEmployee)) {
+        if (!isEmployeeDataChanged(originalEmployee, employeeToUpdate)) {
             System.out.println("No changes detected. Employee data remains unchanged.");
             return null;
         }
 
-        return updatedEmployee;
+        return employeeToUpdate;
     }
 
     private static boolean isEmployeeDataChanged(Employee original, Employee updated) {
         return !original.getFirstName().equals(updated.getFirstName()) ||
                 !original.getLastName().equals(updated.getLastName()) ||
-                !original.getTelephone().equals(updated.getTelephone()) ||
+                !original.getPosition().equals(updated.getPosition()) ||
                 !original.getEmail().equals(updated.getEmail()) ||
                 original.getIdCompany() != updated.getIdCompany() ||
                 !original.getCompanyType().equals(updated.getCompanyType());
