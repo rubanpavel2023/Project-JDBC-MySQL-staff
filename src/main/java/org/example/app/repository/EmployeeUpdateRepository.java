@@ -28,7 +28,7 @@ public class EmployeeUpdateRepository {
                     employee.setIdEmployee(rs.getInt("id_Employee"));
                     employee.setFirstName(rs.getString("first_Name"));
                     employee.setLastName(rs.getString("last_Name"));
-                    employee.setTelephone(rs.getString("telephone"));
+                    employee.setPosition(rs.getString("position"));
                     employee.setEmail(rs.getString("email"));
                     employee.setIdCompany(rs.getInt("id_Company"));
                     employee.setCompanyType(rs.getString("company_Type"));
@@ -49,12 +49,12 @@ public class EmployeeUpdateRepository {
     }
 
     public boolean updateEmployee(Employee employee) {
-        if (employee == null){
+        if (employee == null) {
             return false;
         }
         String sql = "UPDATE " + Constants.TABLE_EMPLOYEES +
                 " SET first_Name = ?, last_Name = ?, " +
-                "telephone = ?, email = ?, " +
+                "position = ?, email = ?, " +
                 "id_Company = ?, " + "company_Type = ? WHERE id_Employee = ?";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
@@ -63,18 +63,23 @@ public class EmployeeUpdateRepository {
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, employee.getFirstName());
                 pstmt.setString(2, employee.getLastName());
-                pstmt.setString(3, employee.getTelephone());
+                pstmt.setString(3, employee.getPosition());
                 pstmt.setString(4, employee.getEmail());
                 pstmt.setInt(5, employee.getIdCompany());
                 pstmt.setString(6, employee.getCompanyType());
                 pstmt.setInt(7, employee.getIdEmployee());
 
                 int rowsAffected = pstmt.executeUpdate();
-                return rowsAffected > 0;
+                if (rowsAffected > 0) {
+                    System.out.println("Employee updated successfully");
+                    return true;
+                } else {
+                    System.out.println("No changes detected. No update needed.");
+                    return false;
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
     }
-
 }

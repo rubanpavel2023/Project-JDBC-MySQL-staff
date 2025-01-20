@@ -28,7 +28,7 @@ public class EmployeeReadRepository {
                     employee.setIdEmployee(rs.getInt("id_Employee"));
                     employee.setFirstName(rs.getString("first_Name"));
                     employee.setLastName(rs.getString("last_Name"));
-                    employee.setTelephone(rs.getString("telephone"));
+                    employee.setPosition(rs.getString("position"));
                     employee.setEmail(rs.getString("email"));
                     employee.setIdCompany(rs.getInt("id_Company"));
                     employee.setCompanyType(rs.getString("company_Type"));
@@ -59,7 +59,7 @@ public class EmployeeReadRepository {
                     employee.setIdEmployee(rs.getInt("id_Employee"));
                     employee.setFirstName(rs.getString("first_Name"));
                     employee.setLastName(rs.getString("last_Name"));
-                    employee.setTelephone(rs.getString("telephone"));
+                    employee.setPosition(rs.getString("position"));
                     employee.setEmail(rs.getString("email"));
                     employee.setIdCompany(rs.getInt("id_Company"));
                     employee.setCompanyType(rs.getString("company_Type"));
