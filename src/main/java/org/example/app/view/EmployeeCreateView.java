@@ -11,6 +11,7 @@ public class EmployeeCreateView {
     public static Employee getEmployeeDetails() {
         Employee employeeToCreate = new Employee();
 
+        System.out.println("Creating a new employee");
         System.out.println("Enter employee firstName: ");
         String firstName = scanner.nextLine();
         employeeToCreate.setFirstName(firstName);

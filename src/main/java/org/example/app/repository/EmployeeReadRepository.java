@@ -14,6 +14,7 @@ import java.util.Optional;
 
 
 public class EmployeeReadRepository {
+    /*перенести метод readEmployees в контроллер*/
     public void readEmployees(List<Employee> employees) {
         System.out.println("Below is the list of employees based on your query:");
 
