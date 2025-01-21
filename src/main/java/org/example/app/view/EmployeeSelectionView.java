@@ -18,8 +18,8 @@ public class EmployeeSelectionView {
             System.out.println((i + 1) + ". ID: " + selectedEmployee.getIdEmployee() +
                     ", Name: " + selectedEmployee.getFirstName() + " " + selectedEmployee.getLastName() +
                     ", Position: " + selectedEmployee.getPosition() +
-                    ", Email: " + selectedEmployee.getEmail() +
-                    ", Company: " + selectedEmployee.getCompanyType());
+                    ", Email: " + selectedEmployee.getEmail());
+
         }
         System.out.print("Enter the number of the employee to update: ");
         int choice = scanner.nextInt();

@@ -21,6 +21,8 @@ public class EmployeeDeleteRepository {
                 pstmt.setInt(2, employeeToDelete.getIdEmployee());
 
                 int rowsAffected = pstmt.executeUpdate();
+                System.out.print("Employee " + employeeToDelete.getLastName() +
+                        " has been successfully removed from the database");
                 return rowsAffected > 0;
             }
         } catch (SQLException e) {

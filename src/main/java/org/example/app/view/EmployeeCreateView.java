@@ -31,9 +31,6 @@ public class EmployeeCreateView {
         int idCompany = scanner.nextInt();
         employeeToCreate.setIdCompany(idCompany);
 
-        System.out.println("Enter employee companyType: ");
-        String companyType = scanner.nextLine();
-        employeeToCreate.setCompanyType(companyType);
 
         return employeeToCreate;
     }
