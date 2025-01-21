@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class EmployeeUpdateRepository {
-    public List<Employee> findEmployeesByLastName(String lastName) {
+    /*public List<Employee> findEmployeesByLastName(String lastName) {
         List<Employee> employees = new ArrayList<>();
         String sql = "SELECT * FROM " + Constants.TABLE_EMPLOYEES + " WHERE last_Name = ?";
         try (Connection conn = DBConn.connect()) {
@@ -46,7 +46,7 @@ public class EmployeeUpdateRepository {
             return optionalEmployees.get();
 
         }
-    }
+    }*/
 
     public boolean updateEmployee(Employee employee) {
         if (employee == null) {
@@ -55,7 +55,7 @@ public class EmployeeUpdateRepository {
         String sql = "UPDATE " + Constants.TABLE_EMPLOYEES +
                 " SET first_Name = ?, last_Name = ?, " +
                 "position = ?, email = ?, " +
-                "id_Company = ?, " + "company_Type = ? WHERE id_Employee = ?";
+                "id_Company = ? WHERE id_Employee = ?";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
                 throw new RuntimeException("Failed to establish database connection");
@@ -66,8 +66,7 @@ public class EmployeeUpdateRepository {
                 pstmt.setString(3, employee.getPosition());
                 pstmt.setString(4, employee.getEmail());
                 pstmt.setInt(5, employee.getIdCompany());
-                pstmt.setString(6, employee.getCompanyType());
-                pstmt.setInt(7, employee.getIdEmployee());
+                pstmt.setInt(6, employee.getIdEmployee());
 
                 int rowsAffected = pstmt.executeUpdate();
                 if (rowsAffected > 0) {

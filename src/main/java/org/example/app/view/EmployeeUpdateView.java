@@ -37,11 +37,6 @@ public class EmployeeUpdateView {
         employeeToUpdate.setIdCompany(idCompanyInput.isEmpty() ? originalEmployee.getIdCompany() : Integer.parseInt(idCompanyInput));
         System.out.println("New company ID: " + employeeToUpdate.getIdCompany());
 
-        System.out.print("Enter new company type (current: " + originalEmployee.getCompanyType() + "): ");
-        String companyType = scanner.nextLine();
-        employeeToUpdate.setCompanyType(companyType.isEmpty() ? originalEmployee.getCompanyType() : companyType);
-        System.out.println("New company type: " + employeeToUpdate.getCompanyType());
-
         if (!isEmployeeDataChanged(originalEmployee, employeeToUpdate)) {
             System.out.println("No changes detected. Employee data remains unchanged.");
             return null;
@@ -55,8 +50,7 @@ public class EmployeeUpdateView {
                 !original.getLastName().equals(updated.getLastName()) ||
                 !original.getPosition().equals(updated.getPosition()) ||
                 !original.getEmail().equals(updated.getEmail()) ||
-                original.getIdCompany() != updated.getIdCompany() ||
-                !original.getCompanyType().equals(updated.getCompanyType());
+                original.getIdCompany() != updated.getIdCompany();
     }
 }
 

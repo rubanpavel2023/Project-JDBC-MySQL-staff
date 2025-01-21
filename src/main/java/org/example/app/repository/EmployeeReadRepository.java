@@ -14,33 +14,17 @@ import java.util.Optional;
 
 
 public class EmployeeReadRepository {
-    public Optional<Employee> readEmployee(int idEmployee) {
-        String sql = "SELECT * FROM " + Constants.TABLE_EMPLOYEES + " WHERE id_Employee = ?";
-        try (Connection conn = DBConn.connect()) {
-            if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
-            }
-            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setInt(1, idEmployee);
-                ResultSet rs = pstmt.executeQuery();
-                if (rs.next()) {
-                    Employee employee = new Employee();
-                    employee.setIdEmployee(rs.getInt("id_Employee"));
-                    employee.setFirstName(rs.getString("first_Name"));
-                    employee.setLastName(rs.getString("last_Name"));
-                    employee.setPosition(rs.getString("position"));
-                    employee.setEmail(rs.getString("email"));
-                    employee.setIdCompany(rs.getInt("id_Company"));
-                    employee.setCompanyType(rs.getString("company_Type"));
-                    return Optional.of(employee);
-                } else {
-                    System.out.println("No employee found with ID: " + idEmployee);
-                    return Optional.empty();
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Database error: " + e.getMessage(), e);
-        }
+    public void readEmployees(List<Employee> employees) {
+        System.out.println("Below is the list of employees based on your query:");
+
+        employees.forEach(employee -> System.out.println(
+                "ID: " + employee.getIdEmployee() +
+                        ", First Name: " + employee.getFirstName() +
+                        ", Last Name: " + employee.getLastName() +
+                        ", Position: " + employee.getPosition() +
+                        ", Email: " + employee.getEmail() +
+                        ", Company ID: " + employee.getIdCompany()
+        ));
     }
 
 
@@ -62,7 +46,6 @@ public class EmployeeReadRepository {
                     employee.setPosition(rs.getString("position"));
                     employee.setEmail(rs.getString("email"));
                     employee.setIdCompany(rs.getInt("id_Company"));
-                    employee.setCompanyType(rs.getString("company_Type"));
                     employees.add(employee);
                 }
             }

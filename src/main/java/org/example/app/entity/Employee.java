@@ -9,7 +9,6 @@ public class Employee {
     private String position;
     private String email;
     private int idCompany;
-    private String companyType;
 
     public int getIdEmployee() {
         return idEmployee;
@@ -59,23 +58,15 @@ public class Employee {
         this.idCompany = idCompany;
     }
 
-    public String getCompanyType() {
-        return companyType;
-    }
-
-    public void setCompanyType(String companyType) {
-        this.companyType = companyType;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee employee)) return false;
-        return getIdCompany() == employee.getIdCompany() && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getPosition(), employee.getPosition()) && Objects.equals(getEmail(), employee.getEmail()) && Objects.equals(getCompanyType(), employee.getCompanyType());
+        return getIdEmployee() == employee.getIdEmployee() && getIdCompany() == employee.getIdCompany() && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getPosition(), employee.getPosition()) && Objects.equals(getEmail(), employee.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(), getLastName(), getPosition(), getEmail(), getIdCompany(), getCompanyType());
+        return Objects.hash(getIdEmployee(), getFirstName(), getLastName(), getPosition(), getEmail(), getIdCompany());
     }
 }

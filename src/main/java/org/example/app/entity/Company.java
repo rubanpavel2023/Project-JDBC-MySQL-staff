@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Company {
 
-    private String idCompany;
+    private long idCompany;
     private String nameCompany;
 
-    public String getIdCompany() {
+    public long getIdCompany() {
         return idCompany;
     }
 
-    public void setIdCompany(String idCompany) {
+    public void setIdCompany(long idCompany) {
         this.idCompany = idCompany;
     }
 
