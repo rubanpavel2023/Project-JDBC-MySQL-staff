@@ -14,6 +14,17 @@ import java.util.List;
 import java.util.Optional;
 
 public class CompanyReadRepository {
+
+    /*перенести метод readCompanies в контроллер*/
+    public void readCompanies(List<Company> companies) {
+        System.out.println("Below is the list of companies based on your query:");
+
+        companies.forEach(company -> System.out.println(
+                "ID: " + company.getIdCompany() +
+                        ", Name Company: " + company.getNameCompany()
+        ));
+    }
+
     public Optional<List<Company>> readCompaniesByLastNameStartsWith(char initial) {
         List<Company> companies = new ArrayList<>();
         String sql = "SELECT * FROM " + Constants.TABLE_COMPANIES + " WHERE name_Company LIKE ?";

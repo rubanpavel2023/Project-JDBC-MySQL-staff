@@ -21,9 +21,10 @@ public class EmployeeSelectionView {
                     ", Email: " + selectedEmployee.getEmail());
 
         }
-        System.out.print("Enter the number of the employee to update: ");
-        int choice = scanner.nextInt();
+        System.out.print("Enter the number of the employee " +
+                "from the list to proceed with actions: ");
+        int choiceEmployee = scanner.nextInt();
         scanner.nextLine();
-        return employees.get(choice - 1);
+        return employees.get(choiceEmployee - 1);
     }
 }
