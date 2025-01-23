@@ -7,24 +7,20 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBConn {
-
     static Properties prop = new Properties();
 
     public static Connection connect() {
         try {
-            prop.load(DBConn.class.getResourceAsStream("/resources/jdbc.properties"));
-            try (Connection conn = DriverManager.getConnection(prop.getProperty("dbDriver") + prop.getProperty("dbName"),
+            prop.load(DBConn.class.getResourceAsStream("/jdbc.properties"));
+            return DriverManager.getConnection(prop.getProperty("dbDriver") + prop.getProperty("dbName"),
                     prop.getProperty("username"),
-                    prop.getProperty("password"))) {
-                return conn;
-            }
+                    prop.getProperty("password"));
         } catch (SQLException | IOException e) {
             System.out.println(e.getMessage());
         }
         return null;
-
     }
-
 }
+
 
 
