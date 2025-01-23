@@ -4,7 +4,29 @@ import org.example.app.entity.Company;
 import java.util.Scanner;
 
 public class CompanyCreateView {
-    private static final Scanner scanner = new Scanner(System.in);
+
+
+    public String[] getData() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter company name: ");
+        String name = scanner.nextLine().trim();
+
+        return new String[]{name};
+    }
+
+    public void getOutput(String output) {
+        System.out.println(output);
+    }
+
+
+
+
+
+
+
+   /* private static final Scanner scanner = new Scanner(System.in);
 
     public static Company getCompanyDetails() {
         System.out.println("Creating a new company");
@@ -13,6 +35,6 @@ public class CompanyCreateView {
         Company companyToCreate = new Company();
         companyToCreate.setNameCompany(nameCompany);
         return companyToCreate;
-    }
+    }*/
 }
 

@@ -15,7 +15,7 @@ public class CompanyCreateRepository {
                 " (name_Company) " + "VALUES(?)";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
+                return "Failed to establish database connection";
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, companyToCreate.getNameCompany());
