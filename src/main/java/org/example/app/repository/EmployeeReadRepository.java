@@ -3,17 +3,19 @@ package org.example.app.repository;
 import org.example.app.constants.Constants;
 import org.example.app.database.DBConn;
 import org.example.app.entity.Employee;
+import org.example.app.view.EntitySearchView;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-
 public class EmployeeReadRepository {
+
     /*перенести метод readEmployees в контроллер*/
     public void readEmployees(List<Employee> employees) {
         System.out.println("Below is the list of employees based on your query:");
@@ -29,7 +31,7 @@ public class EmployeeReadRepository {
     }
 
 
-    public Optional<List<Employee>> readEmployeesByLastNameStartsWith(char initial) {
+    public List<Employee> readEmployeesByLastNameStartsWith(char initial) {
         List<Employee> employees = new ArrayList<>();
         String sql = "SELECT * FROM " + Constants.TABLE_EMPLOYEES + " WHERE last_Name LIKE ?";
         try (Connection conn = DBConn.connect()) {
@@ -53,10 +55,9 @@ public class EmployeeReadRepository {
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
-        return Optional.ofNullable(employees.isEmpty() ? null : employees);
-        //return employees.isEmpty() ? Optional.empty() : Optional.of(employees);
-    }
 
+        return Optional.ofNullable(employees.isEmpty() ? null : employees).orElse(Collections.emptyList());
+    }
 }
 
 

@@ -26,7 +26,6 @@ public class CompanyUpdateRepository {
 
                 int rowsAffected = pstmt.executeUpdate();
                 if (rowsAffected > 0) {
-                    System.out.println("Company updated successfully");
                     return true;
                 } else {
                     System.out.println("No changes detected. No update needed.");

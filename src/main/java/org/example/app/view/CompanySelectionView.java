@@ -1,11 +1,19 @@
 package org.example.app.view;
 
 import org.example.app.entity.Company;
+import org.example.app.repository.CompanyReadRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class CompanySelectionView {
+    CompanyReadRepository repositoryRead;
+
+    public CompanySelectionView(CompanyReadRepository readRepository) {
+        this.repositoryRead = readRepository;
+    }
+
     private static final Scanner scanner = new Scanner(System.in);
 
     public static Company selectCompany(List<Company> companies) {
