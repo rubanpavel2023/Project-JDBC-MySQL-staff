@@ -5,6 +5,7 @@ public class Constants {
     public static final String TABLE_COMPANIES = "companies";
     public static final String DATA_EMPLOYEE_INSERT_MSG = "Employee created successfully";
     public static final String DATA_COMPANY_INSERT_MSG = "Company created successfully";
+    public final static String DATA_UPDATE_MSG = "\n>> Updated.";
     public static final String INCORRECT_VALUE_MSG = " Incorrect value!";
     public static final String EMAIL_REGEX = "^[a-z0-9+_.-]+@(.+)$";
     public static final String NAME_REGEX = "^[A-Z][a-z]*$";

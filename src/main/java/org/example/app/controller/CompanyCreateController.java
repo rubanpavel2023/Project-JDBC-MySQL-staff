@@ -7,7 +7,8 @@ import org.example.app.view.CompanyCreateView;
 public class CompanyCreateController {
     CompanyCreateService service;
     CompanyCreateView view;
-    public CompanyCreateController(CompanyCreateService service,CompanyCreateView view ) {
+
+    public CompanyCreateController(CompanyCreateService service, CompanyCreateView view) {
         this.service = service;
         this.view = view;
     }
