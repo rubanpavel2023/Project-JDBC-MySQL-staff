@@ -1,5 +1,6 @@
 package org.example.app.service;
 
+import org.example.app.constants.Constants;
 import org.example.app.entity.Company;
 import org.example.app.repository.CompanyReadRepository;
 import org.example.app.repository.CompanyUpdateRepository;
@@ -21,11 +22,12 @@ public class CompanyUpdateService {
         this.repositoryRead = repositoryRead;
     }
 
-    public boolean getUpdateCompany(char firstLetter) {
+    public String getUpdateCompany(char firstLetter) {
         List<Company> companies =
                 repositoryRead.readCompaniesByLastNameStartsWith(firstLetter);
         choiceCompany = CompanySelectionView.selectCompany(companies);
-        return repositoryUpdate.updateCompany(updateData(choiceCompany));
+        repositoryUpdate.updateCompany(updateData(choiceCompany));
+        return Constants.DATA_COMPANY_UPDATE_MSG;
 
     }
 

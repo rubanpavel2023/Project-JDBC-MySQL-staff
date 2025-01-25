@@ -1,7 +1,5 @@
 package org.example.app.view;
 
-import org.example.app.entity.Company;
-
 import java.util.Scanner;
 
 public class CompanyUpdateView {
@@ -13,5 +11,9 @@ public class CompanyUpdateView {
         System.out.print("Enter new name company: ");
         String newNameCompany = scanner.nextLine();
         return new String[]{newNameCompany};
+    }
+
+    public void getOutput(String output) {
+        System.out.println(output);
     }
 }
