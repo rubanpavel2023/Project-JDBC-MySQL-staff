@@ -13,6 +13,7 @@ public class CompanyUpdateService {
     CompanyUpdateRepository repositoryUpdate;
     CompanyReadRepository repositoryRead;
     Company choiceCompany;
+    List<Company> companies;
 
 
     public CompanyUpdateService(CompanyUpdateRepository repositoryUpdate, CompanyReadRepository repositoryRead) {

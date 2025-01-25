@@ -44,7 +44,7 @@ public class CompanyReadRepository {
                 ResultSet rs = pstmt.executeQuery();
                 while (rs.next()) {
                     Company company = new Company();
-                    company.setIdCompany(rs.getInt(rs.getInt("id_Company")));
+                    company.setIdCompany(rs.getInt("id_Company"));
                     company.setNameCompany(rs.getString("name_Company"));
                     companies.add(company);
                 }
