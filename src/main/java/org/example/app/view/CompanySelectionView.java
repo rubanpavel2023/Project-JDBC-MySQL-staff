@@ -18,13 +18,15 @@ public class CompanySelectionView {
 
     public static Company selectCompany(List<Company> companies) {
         if (companies.size() == 1) {
+            System.out.println ("Сompany according to your request: " + "\n" +
+                    companies.get(0).getNameCompany());
             return companies.get(0);
         }
         System.out.println("Select a company from the list:");
         for (int i = 0; i < companies.size(); i++) {
             Company selectedCompany = companies.get(i);
-            System.out.println((i + 1) + ". ID: " + selectedCompany.getIdCompany() +
-                    ", Name company: " + selectedCompany.getNameCompany());
+            System.out.println((i + 1) + /*". ID: " + selectedCompany.getIdCompany() +
+                    ",*/ ") Name company: " + selectedCompany.getNameCompany());
         }
         System.out.print("Enter the number of the company " +
                 "from the list to proceed with actions: ");

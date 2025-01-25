@@ -1,6 +1,7 @@
 package org.example.app.controller;
 
 import org.example.app.service.CompanyUpdateService;
+import org.example.app.utils.AppStarter;
 import org.example.app.view.EntitySearchView;
 
 public class CompanyUpdateController {
@@ -16,6 +17,7 @@ public class CompanyUpdateController {
 
     public void updateCompany() {
         service.getUpdateCompany(EntitySearchView.getInitialOfName());
+        AppStarter.startApp();
 
     }
 }

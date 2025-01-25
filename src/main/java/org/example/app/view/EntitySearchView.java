@@ -1,5 +1,8 @@
 package org.example.app.view;
 
+import org.example.app.entity.Company;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class EntitySearchView {
