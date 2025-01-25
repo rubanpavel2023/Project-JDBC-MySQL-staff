@@ -11,6 +11,7 @@ import org.example.app.repository.CompanyUpdateRepository;
 import org.example.app.utils.AppStarter;
 import org.example.app.view.CompanyCreateView;
 
+import org.example.app.view.CompanyUpdateView;
 import org.example.app.view.EntitySearchView;
 
 
@@ -29,7 +30,8 @@ public class AppService {
         CompanyReadRepository repositoryRead = new CompanyReadRepository(search);
         CompanyUpdateRepository repositoryUpdate = new CompanyUpdateRepository();
         CompanyUpdateService service = new CompanyUpdateService(repositoryUpdate, repositoryRead);
-        CompanyUpdateController controller = new CompanyUpdateController(service, search);
+        CompanyUpdateView view = new CompanyUpdateView();
+        CompanyUpdateController controller = new CompanyUpdateController(service,view);
         controller.updateCompany();
 
     }
