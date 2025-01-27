@@ -10,10 +10,7 @@ import java.sql.SQLException;
 
 public class CompanyUpdateRepository {
 
-    public boolean updateCompany(Company company) {
-        if (company == null) {
-            return false;
-        }
+    public String updateCompany(Company company) {
         String sql = "UPDATE " + Constants.TABLE_COMPANIES +
                 " SET name_Company = ? WHERE id_Company = ?";
         try (Connection conn = DBConn.connect()) {
@@ -26,11 +23,9 @@ public class CompanyUpdateRepository {
 
                 int rowsAffected = pstmt.executeUpdate();
                 if (rowsAffected > 0) {
-                //    System.out.println("Company data updated successfully");
-                    return true;
+                    return Constants.DATA_COMPANY_UPDATE_MSG;
                 } else {
-                    System.out.println("No changes detected. No update needed");
-                    return false;
+                    return "No company found with the specified ID. No update performed.";
                 }
             }
         } catch (SQLException e) {
@@ -38,3 +33,5 @@ public class CompanyUpdateRepository {
         }
     }
 }
+
+
