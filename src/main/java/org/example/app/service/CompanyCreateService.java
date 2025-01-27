@@ -34,11 +34,18 @@ public class CompanyCreateService {
     private Map<String, String> validateData(String[] data) {
         Map<String, String> errors = new HashMap<>();
 
-        if (data[0].isEmpty())
-            errors.put("first name", Constants.INPUT_REQ_MSG);
-
+        if (data[0].isEmpty()) {
+            errors.put("Name", Constants.INPUT_REQ_MSG);
+        }
+        if (!isAlphaNumeric(data[0])) {
+            errors.put("Name", Constants.ALPHANUMERIC_VALUES_ONLY_MSG);
+        }
 
         return errors;
+    }
+
+    private boolean isAlphaNumeric(String date) {
+        return date.matches("[a-zA-Z0-9]+");
     }
 
     private Company convertData(String[] data) {
