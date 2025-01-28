@@ -10,28 +10,34 @@ public class EntitySearchView {
 
     public static char getInitialOfName() {
         while (true) {
-            System.out.println("Select the entity for which you want to enter the first letter:");
-            System.out.println("1. Employee");
-            System.out.println("2. Company");
-            System.out.print("Enter your choice (1 or 2): ");
+            System.out.println("Select the entity for which you want to enter the first letter ");
+            System.out.println("Enter your choice (1 or 2): ");
+            System.out.println(" - 1. Employee");
+            System.out.println(" - 2. Company");
 
             String choice = scanner.nextLine();
-            if (choice.equals("1")) {
+            if (choice.length() == 1 && choice.equals("1")) {
                 System.out.print("Enter the first letter of the employee's last name: ");
-            } else if (choice.equals("2")) {
+            }
+            if (choice.length() == 1 && choice.equals("2")) {
                 System.out.print("Enter the first letter of the company name: ");
             } else {
-                System.out.println("Invalid choice. Please enter 1 or 2.");
+                System.out.println("! Invalid choice");
+                System.out.println();
                 continue;
             }
-
-            String input = scanner.nextLine();
-            if (input.length() == 1) {
-                return input.charAt(0);
-            } else {
-                System.out.println("Invalid input. Please enter exactly one character.");
+            while (true) {
+                String input = scanner.nextLine();
+                if (input.length() == 1) {
+                    return input.charAt(0);
+                } else {
+                    System.out.println("! Invalid input. Please enter exactly one character.");
+                }
             }
         }
     }
 }
+
+
+
 

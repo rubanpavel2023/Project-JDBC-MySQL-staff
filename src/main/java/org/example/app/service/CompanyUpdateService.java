@@ -23,15 +23,16 @@ public class CompanyUpdateService {
         this.repositoryRead = repositoryRead;
     }
 
-    public String getUpdateCompany(char firstLetter) {
-        List<Company> companies =
-                repositoryRead.readCompaniesByLastNameStartsWith(firstLetter);
+    public String updateCompany(char firstLetter) {
+        companies = repositoryRead.readCompaniesByLastNameStartsWith(firstLetter);
         choiceCompany = CompanySelectionView.selectCompany(companies);
+        if (choiceCompany == null) {
+            return Constants.NOTHING_FOUND_MSG;
+        }
         Company updatedCompany = updateData(choiceCompany);
         if (updatedCompany == null) {
             return Constants.SAME_NAME_ENTERED_MSG;
-        }
-        return repositoryUpdate.updateCompany(updatedCompany);
+        } else return repositoryUpdate.updateCompany(updatedCompany);
 
     }
 

@@ -8,7 +8,6 @@ import org.example.app.view.EntitySearchView;
 public class CompanyUpdateController {
 
     CompanyUpdateService service;
-    //EntitySearchView view;
     CompanyUpdateView view;
 
 
@@ -18,7 +17,7 @@ public class CompanyUpdateController {
     }
 
     public void updateCompany() {
-        view.getOutput(service.getUpdateCompany(EntitySearchView.getInitialOfName()));
+        view.getOutput(service.updateCompany(EntitySearchView.getInitialOfName()));
         AppStarter.startApp();
 
     }
