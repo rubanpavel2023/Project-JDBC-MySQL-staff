@@ -1,6 +1,5 @@
 package org.example.app.exeptions;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class CreateException extends RuntimeException {
@@ -12,7 +11,6 @@ public class CreateException extends RuntimeException {
     }
 
     public String getErrors(Map<String, String> errors) {
-        this.errors = new HashMap<>();
         StringBuilder stringBuilder = new StringBuilder();
         errors.forEach((key, value) ->
                 stringBuilder.append("\n>> ")

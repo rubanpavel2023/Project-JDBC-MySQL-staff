@@ -20,18 +20,14 @@ public class CompanyUpdateRepository {
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, company.getNameCompany());
                 pstmt.setInt(2, company.getIdCompany());
-
-                int rowsAffected = pstmt.executeUpdate();
-                if (rowsAffected > 0) {
-                    return Constants.DATA_COMPANY_UPDATE_MSG;
-                } else {
-                    return "No company found with the specified ID. No update performed.";
-                }
+                pstmt.executeUpdate();
+                return Constants.DATA_COMPANY_UPDATE_MSG;
             }
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
     }
 }
+
 
 

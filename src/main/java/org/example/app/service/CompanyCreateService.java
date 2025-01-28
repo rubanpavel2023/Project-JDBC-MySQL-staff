@@ -37,16 +37,16 @@ public class CompanyCreateService {
         if (data[0].isEmpty()) {
             errors.put("Name", Constants.INPUT_REQ_MSG);
         }
-        if (!isAlphaNumeric(data[0])) {
+        /*if (!isAlphaNumeric(data[0])) {
             errors.put("Name", Constants.ALPHANUMERIC_VALUES_ONLY_MSG);
-        }
+        }*/
 
         return errors;
     }
 
-    private boolean isAlphaNumeric(String date) {
+    /*private boolean isAlphaNumeric(String date) {
         return date.matches("[a-zA-Z0-9]+");
-    }
+    }*/
 
     private Company convertData(String[] data) {
         Company company = new Company();
