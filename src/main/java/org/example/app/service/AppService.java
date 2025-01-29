@@ -32,25 +32,23 @@ public class AppService {
     }
 
     public void updateCompany() {
-        EntitySearchView search = new EntitySearchView();
-        CompanyReadRepository repositoryRead = new CompanyReadRepository(search);
+        CompanyReadRepository repositoryRead = new CompanyReadRepository();
         CompanyUpdateRepository repositoryUpdate = new CompanyUpdateRepository();
         CompanyUpdateService service = new CompanyUpdateService(repositoryUpdate, repositoryRead);
         CompanyUpdateView view = new CompanyUpdateView();
-        CompanyUpdateController controller = new CompanyUpdateController(service,view);
+        CompanyUpdateController controller = new CompanyUpdateController(service, view);
         controller.updateCompany();
 
     }
-    public void readCompany (){
-        EntitySearchView search = new EntitySearchView();
-        CompanyReadRepository repositoryRead = new CompanyReadRepository(search);
-        CompanyReadService service = new CompanyReadService(repositoryRead,search);
+
+    public void readCompany() {
+        CompanyReadRepository repositoryRead = new CompanyReadRepository();
+        CompanyReadService service = new CompanyReadService(repositoryRead);
         CompanyReadView view = new CompanyReadView();
-        CompanyReadController controller = new CompanyReadController(service,view);
+        CompanyReadController controller = new CompanyReadController(service, view);
         controller.readCompany();
 
     }
-
 
 
     public void getNoSuchOption(int choice) {

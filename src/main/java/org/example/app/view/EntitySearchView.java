@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class EntitySearchView {
     private static final Scanner scanner = new Scanner(System.in);
+    public static char choiceCompleteList = '+';
 
     public static char getInitialOfName() {
         while (true) {
@@ -18,12 +19,12 @@ public class EntitySearchView {
 
             String choice = scanner.nextLine();
             if (choice.length() == 1 && choice.equals("1")) {
-                System.out.print("- Enter the first letter of the employee's last name "+ "\n" +
-                        "- To download a database of two employees, click +" );
+                System.out.print("- Enter the first letter of the employee's last name " + "\n" +
+                        "- To download a database of two employees, click +");
             }
             if (choice.length() == 1 && choice.equals("2")) {
                 System.out.print("- Enter the first letter of the company name " + "\n" +
-                        "- To download a database of two companies, click +"  );
+                        "- To download a database of two companies, click +");
             } else {
                 System.out.println(Constants.INCORRECT_VALUE_MSG);
                 System.out.println();

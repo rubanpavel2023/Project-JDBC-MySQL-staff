@@ -19,21 +19,6 @@ public class CompanyReadRepository {
 
     EntitySearchView searchView;
 
-    public CompanyReadRepository(EntitySearchView searchView) {
-        this.searchView = searchView;
-    }
-
-    public void readCompanies(List<Company> companies) {
-        if (companies.isEmpty()){
-            System.out.println(Constants.NOTHING_FOUND_MSG);
-        }
-        else System.out.println("Below is the list of companies based on your query:");
-        companies.forEach(company -> System.out.println(
-                "ID: " + company.getIdCompany() +
-                        ", Name Company: " + company.getNameCompany()
-        ));
-    }
-
 
     public List<Company> readCompaniesByLastNameStartsWith(char initial) {
         List<Company> companies = new ArrayList<>();
@@ -60,7 +45,7 @@ public class CompanyReadRepository {
     }
 
 
-    public List<Company> readAllCompanies(char initial) {
+    public List<Company> readAllCompanies() {
         List<Company> companies = new ArrayList<>();
         String sqlAll = "SELECT * FROM " + Constants.TABLE_COMPANIES;
         try (Connection conn = DBConn.connect()) {

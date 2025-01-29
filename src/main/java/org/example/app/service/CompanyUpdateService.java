@@ -6,6 +6,7 @@ import org.example.app.repository.CompanyReadRepository;
 import org.example.app.repository.CompanyUpdateRepository;
 import org.example.app.view.CompanySelectionView;
 import org.example.app.view.CompanyUpdateView;
+import org.example.app.view.EntitySearchView;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -23,8 +24,9 @@ public class CompanyUpdateService {
         this.repositoryRead = repositoryRead;
     }
 
-    public String updateCompany(char firstLetter) {
-        companies = repositoryRead.readCompaniesByLastNameStartsWith(firstLetter);
+    public String updateCompany() {
+        companies = repositoryRead.
+                readCompaniesByLastNameStartsWith(EntitySearchView.getInitialOfName());
         choiceCompany = CompanySelectionView.selectCompany(companies);
         if (choiceCompany == null) {
             return Constants.NOTHING_FOUND_MSG;

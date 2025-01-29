@@ -3,7 +3,7 @@ package org.example.app.controller;
 import org.example.app.service.CompanyUpdateService;
 import org.example.app.utils.AppStarter;
 import org.example.app.view.CompanyUpdateView;
-import org.example.app.view.EntitySearchView;
+
 
 public class CompanyUpdateController {
 
@@ -17,7 +17,7 @@ public class CompanyUpdateController {
     }
 
     public void updateCompany() {
-        view.getOutput(service.updateCompany(EntitySearchView.getInitialOfName()));
+        view.getOutput(service.updateCompany());
         AppStarter.startApp();
 
     }
