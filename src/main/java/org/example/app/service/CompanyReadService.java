@@ -3,7 +3,7 @@ package org.example.app.service;
 import org.example.app.constants.Constants;
 import org.example.app.entity.Company;
 import org.example.app.repository.CompanyReadRepository;
-import org.example.app.view.EntitySearchView;
+import org.example.app.view.EntitySelectAndSearchView;
 
 import java.util.List;
 
@@ -17,8 +17,8 @@ public class CompanyReadService {
 
 
     public String readCompany() {
-        char choice = EntitySearchView.getInitialOfName();
-        if (choice == EntitySearchView.choiceCompleteList) {
+        char choice = EntitySelectAndSearchView.getInitialOfName();
+        if (choice == EntitySelectAndSearchView.choiceCompleteList) {
             List<Company> allCompanies = repository.readAllCompanies();
             return getCompanies(allCompanies);
         } else {
