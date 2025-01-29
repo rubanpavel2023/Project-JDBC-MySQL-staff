@@ -29,8 +29,8 @@ public class AppView {
                 ______ MENU ___________
                 1 - Create Employee
                 2 - Create Company
-                3 - View Employee
-                4 - View Company
+                3 - Read Employee
+                4 - Read Company
                 5 - Update Employee
                 6 - Update Company
                 7 - Delete Employee

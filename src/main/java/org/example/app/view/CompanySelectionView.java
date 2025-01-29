@@ -18,7 +18,8 @@ public class CompanySelectionView {
     public static Company selectCompany(List<Company> companies) {
         if (companies.isEmpty()) {
             return null;
-        } else if (companies.size() == 1) {
+        }
+        if (companies.size() == 1) {
             System.out.println("Сompany according to your request: " + "\n" +
                     companies.get(0).getNameCompany());
             return companies.get(0);
