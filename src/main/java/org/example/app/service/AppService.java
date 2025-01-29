@@ -2,7 +2,9 @@ package org.example.app.service;
 
 import org.example.app.constants.Constants;
 import org.example.app.controller.CompanyCreateController;
+import org.example.app.controller.CompanyReadController;
 import org.example.app.controller.CompanyUpdateController;
+import org.example.app.entity.Company;
 import org.example.app.exeptions.OptionException;
 import org.example.app.repository.CompanyCreateRepository;
 
@@ -11,8 +13,12 @@ import org.example.app.repository.CompanyUpdateRepository;
 import org.example.app.utils.AppStarter;
 import org.example.app.view.CompanyCreateView;
 
+import org.example.app.view.CompanyReadView;
 import org.example.app.view.CompanyUpdateView;
 import org.example.app.view.EntitySearchView;
+
+import java.awt.*;
+import java.util.List;
 
 
 public class AppService {
@@ -35,6 +41,16 @@ public class AppService {
         controller.updateCompany();
 
     }
+    public void readCompany (){
+        EntitySearchView search = new EntitySearchView();
+        CompanyReadRepository repositoryRead = new CompanyReadRepository(search);
+        CompanyReadService service = new CompanyReadService(repositoryRead,search);
+        CompanyReadView view = new CompanyReadView();
+        CompanyReadController controller = new CompanyReadController(service,view);
+        controller.readCompany();
+
+    }
+
 
 
     public void getNoSuchOption(int choice) {
