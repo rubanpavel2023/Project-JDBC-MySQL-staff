@@ -6,7 +6,7 @@ import org.example.app.repository.CompanyReadRepository;
 import org.example.app.repository.CompanyUpdateRepository;
 import org.example.app.view.CompanySelectionView;
 import org.example.app.view.CompanyUpdateView;
-import org.example.app.view.EntitySelectAndSearchView;
+import org.example.app.view.EntitySearchView;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -14,19 +14,18 @@ import java.util.List;
 
 public class CompanyUpdateService {
     CompanyUpdateRepository repositoryUpdate;
-    CompanyReadRepository repositoryRead;
+    CompanyReadService readService;
     Company choiceCompany;
     List<Company> companies;
 
 
-    public CompanyUpdateService(CompanyUpdateRepository repositoryUpdate, CompanyReadRepository repositoryRead) {
+    public CompanyUpdateService(CompanyUpdateRepository repositoryUpdate, CompanyReadService readService) {
         this.repositoryUpdate = repositoryUpdate;
-        this.repositoryRead = repositoryRead;
+        this.readService = readService;
     }
 
     public String updateCompany() {
-        companies = repositoryRead.
-                readCompaniesByLastNameStartsWith(EntitySelectAndSearchView.getInitialOfName());
+        companies = readService.readCompanyFromUpdateAndDelete();
         choiceCompany = CompanySelectionView.selectCompany(companies);
         if (choiceCompany == null) {
             return Constants.NOTHING_FOUND_MSG;

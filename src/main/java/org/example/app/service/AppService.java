@@ -32,9 +32,10 @@ public class AppService {
     }
 
     public void updateCompany() {
-        CompanyReadRepository repositoryRead = new CompanyReadRepository();
         CompanyUpdateRepository repositoryUpdate = new CompanyUpdateRepository();
-        CompanyUpdateService service = new CompanyUpdateService(repositoryUpdate, repositoryRead);
+        CompanyReadRepository repositoryRead = new CompanyReadRepository();
+        CompanyReadService readService = new CompanyReadService(repositoryRead);
+        CompanyUpdateService service = new CompanyUpdateService(repositoryUpdate, readService);
         CompanyUpdateView view = new CompanyUpdateView();
         CompanyUpdateController controller = new CompanyUpdateController(service, view);
         controller.updateCompany();
