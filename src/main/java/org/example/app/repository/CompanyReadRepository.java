@@ -3,7 +3,6 @@ package org.example.app.repository;
 import org.example.app.constants.Constants;
 import org.example.app.database.DBConn;
 import org.example.app.entity.Company;
-import org.example.app.view.EntitySearchView;
 
 
 import java.sql.Connection;
@@ -16,8 +15,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class CompanyReadRepository {
-
-    EntitySearchView searchView;
 
 
     public List<Company> readCompaniesByLastNameStartsWith(char initial) {

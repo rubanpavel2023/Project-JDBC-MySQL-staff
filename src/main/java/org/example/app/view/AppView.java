@@ -36,7 +36,9 @@ public class AppView {
                 7 - Delete Employee
                 8 - Delete Company
                 0 - Close the App.
+                _______________________
                 """);
+
     }
 
     public void getOutput(int choice, String output) {
