@@ -42,7 +42,8 @@ public class CompanyReadService {
         if (companies.isEmpty()) {
             return Constants.NOTHING_FOUND_MSG;
         } else {
-            StringBuilder stringBuilder = new StringBuilder("Below is the list of companies based on your query:\n");
+            System.out.println("Companies according to your request: \n");
+            StringBuilder stringBuilder = new StringBuilder();
             companies.forEach(company -> stringBuilder.append("ID: ")
                     .append(company.getIdCompany())
                     .append(", Name Company: ")

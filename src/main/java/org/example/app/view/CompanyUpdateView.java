@@ -8,7 +8,7 @@ public class CompanyUpdateView {
 
     public static String[] getData() {
 
-        System.out.print("Enter new name company: ");
+        System.out.print("=> Enter new name company: ");
         String newNameCompany = scanner.nextLine();
         return new String[]{newNameCompany};
     }

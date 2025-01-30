@@ -22,23 +22,29 @@ public class CompanySelectionView {
             return null;
         }
         if (companies.size() == 1) {
-            System.out.println("Company according to your request: " + "\n" +
+            System.out.println("Company according to your request: \n" +
                     companies.get(0).getNameCompany());
             return companies.get(0);
         }
-        System.out.println("=> Select a company from the list:");
+        System.out.println("Companies according to your request: \n");
         for (i = 0; i < companies.size(); i++) {
             Company selectedCompany = companies.get(i);
             System.out.println((i + 1) +
                     ") Name company: " + selectedCompany.getNameCompany());
         }
-        System.out.print("=> Enter the number of the company " +
+        System.out.print("\n => Enter the number of the company " +
                 "from the list to proceed with actions: ");
-        int choiceCompany = scanner.nextInt();
-        if (choiceCompany >= 0 && choiceCompany <= i) {
-            scanner.nextLine();
-            return companies.get(choiceCompany - 1);
-        } else System.out.println(Constants.INCORRECT_VALUE_MSG);
-        return null;
+        while (true) {
+            int choiceCompany = scanner.nextInt();
+            if (choiceCompany > 0 && choiceCompany <= i) {
+                scanner.nextLine();
+                return companies.get(choiceCompany - 1);
+            } else {
+                System.out.println("\n"+Constants.INCORRECT_VALUE_MSG);
+                scanner.nextLine();
+            }
+
+
+        }
     }
 }
