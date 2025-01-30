@@ -11,8 +11,8 @@ public class EntitySearchView {
 
     public static char SelectAndSearchEntity() {
         while (true) {
-            System.out.println("Select the entity " + "\n" +
-                    "Enter your choice (1 or 2): " + "\n" +
+            System.out.println("Select the entity \n" +
+                    "Enter your choice (1 or 2): \n" +
                     " - 1. Employee" + "\n" +
                     " - 2. Company");
 
