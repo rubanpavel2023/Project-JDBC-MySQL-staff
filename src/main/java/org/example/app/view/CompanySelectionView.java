@@ -2,21 +2,17 @@ package org.example.app.view;
 
 import org.example.app.constants.Constants;
 import org.example.app.entity.Company;
-import org.example.app.repository.CompanyReadRepository;
+
 
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class CompanySelectionView {
-    CompanyReadRepository repositoryRead;
+
     private static int i;
-
-    public CompanySelectionView(CompanyReadRepository readRepository) {
-        this.repositoryRead = readRepository;
-    }
-
     private static final Scanner scanner = new Scanner(System.in);
+
 
     public static Company selectCompany(List<Company> companies) {
         if (companies.isEmpty()) {
@@ -33,6 +29,7 @@ public class CompanySelectionView {
             System.out.println((i + 1) +
                     ") Name company: " + selectedCompany.getNameCompany());
         }
+
         System.out.println("\n" + "=> Enter the number of the company " +
                 "from the list to proceed with actions: ");
         while (true) {
@@ -51,4 +48,5 @@ public class CompanySelectionView {
 
         }
     }
+
 }

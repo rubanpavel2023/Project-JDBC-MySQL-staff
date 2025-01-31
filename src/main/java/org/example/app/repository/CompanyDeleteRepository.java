@@ -34,6 +34,7 @@ public class CompanyDeleteRepository {
             throw new RuntimeException(e);
         }
     }
+
 }
 
     /*public String deleteAllCompanies() {

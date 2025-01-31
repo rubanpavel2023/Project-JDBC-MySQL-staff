@@ -1,5 +1,6 @@
 package org.example.app.service;
 
+import org.example.app.constants.Constants;
 import org.example.app.entity.Company;
 import org.example.app.repository.CompanyDeleteRepository;
 import org.example.app.view.CompanySelectionView;
@@ -18,10 +19,14 @@ public class CompanyDeleteService {
         this.readService = readService;
     }
 
-    public void deleteCompany (){
-    choiceCompanies = readService.readCompanyForUpdateAndDelete();
-    choiceCompany = CompanySelectionView.selectCompany(choiceCompanies);
-    repositoryDelete.deleteCompany(choiceCompany);
+    public void deleteCompany() {
+        choiceCompanies = readService.readCompanyForUpdateAndDelete();
+        choiceCompany = CompanySelectionView.selectCompany(choiceCompanies);
+        if (choiceCompany == null) {
+            System.out.println(Constants.NOTHING_FOUND_MSG);
+        } else
+            repositoryDelete.deleteCompany(choiceCompany);
 
     }
+
 }
