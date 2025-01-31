@@ -26,5 +26,6 @@ public class CompanyCreateRepository {
             return "Database error: " + e.getMessage();
         }
     }
+
 }
 

@@ -27,6 +27,7 @@ public class CompanyUpdateRepository {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
     }
+
 }
 
 

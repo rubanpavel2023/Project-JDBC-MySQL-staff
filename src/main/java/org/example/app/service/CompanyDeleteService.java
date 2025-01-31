@@ -28,4 +28,5 @@ public class CompanyDeleteService {
             repositoryDelete.deleteCompany(choiceCompany);
 
     }
+
 }

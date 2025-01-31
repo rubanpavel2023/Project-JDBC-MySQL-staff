@@ -39,6 +39,7 @@ public class CompanyReadService {
             List<Company> selectedCompanies = repository.readCompaniesByLastNameStartsWith(choice);
             return view.getCompanies(selectedCompanies);
         }
+
     }
 
   /*  public String getCompanies(List<Company> companies) {

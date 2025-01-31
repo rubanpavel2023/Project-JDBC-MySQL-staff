@@ -25,4 +25,5 @@ public class CompanyReadView {
             return stringBuilder.toString();
         }
     }
+
 }
