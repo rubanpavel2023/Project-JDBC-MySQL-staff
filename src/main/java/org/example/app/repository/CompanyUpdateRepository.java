@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class CompanyUpdateRepository {
 
-    public String updateCompany(Company company) {
+    public String updateCompany(Company companyToUpdate) {
         String sql = "UPDATE " + Constants.TABLE_COMPANIES +
                 " SET name_Company = ? WHERE id_Company = ?";
         try (Connection conn = DBConn.connect()) {
@@ -18,8 +18,8 @@ public class CompanyUpdateRepository {
                 throw new RuntimeException("Failed to establish database connection");
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setString(1, company.getNameCompany());
-                pstmt.setInt(2, company.getIdCompany());
+                pstmt.setString(1, companyToUpdate.getNameCompany());
+                pstmt.setInt(2, companyToUpdate.getIdCompany());
                 pstmt.executeUpdate();
                 return Constants.DATA_COMPANY_UPDATE_MSG;
             }

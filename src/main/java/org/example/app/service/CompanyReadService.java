@@ -3,6 +3,7 @@ package org.example.app.service;
 import org.example.app.constants.Constants;
 import org.example.app.entity.Company;
 import org.example.app.repository.CompanyReadRepository;
+import org.example.app.view.CompanyReadView;
 import org.example.app.view.EntitySearchView;
 
 import java.util.List;
@@ -10,19 +11,21 @@ import java.util.List;
 public class CompanyReadService {
 
     CompanyReadRepository repository;
+    CompanyReadView view;
 
-    public CompanyReadService(CompanyReadRepository repository) {
+    public CompanyReadService(CompanyReadRepository repository, CompanyReadView view) {
         this.repository = repository;
+        this.view = view;
     }
 
-    public List<Company> readCompanyFromUpdateAndDelete() {
+    public List<Company> readCompanyForUpdateAndDelete() {
         char choice = EntitySearchView.SelectAndSearchEntity();
         if (choice == EntitySearchView.choiceCompleteList) {
             List<Company> allCompanies = repository.readAllCompanies();
             return allCompanies;
         } else {
-            List<Company> selectedCompanies = repository.readCompaniesByLastNameStartsWith(choice);
-            return selectedCompanies;
+            List<Company> choiceCompanies = repository.readCompaniesByLastNameStartsWith(choice);
+            return choiceCompanies;
         }
     }
 
@@ -31,18 +34,18 @@ public class CompanyReadService {
         char choice = EntitySearchView.SelectAndSearchEntity();
         if (choice == EntitySearchView.choiceCompleteList) {
             List<Company> allCompanies = repository.readAllCompanies();
-            return getCompanies(allCompanies);
+            return view.getCompanies(allCompanies);
         } else {
             List<Company> selectedCompanies = repository.readCompaniesByLastNameStartsWith(choice);
-            return getCompanies(selectedCompanies);
+            return view.getCompanies(selectedCompanies);
         }
     }
 
-    public String getCompanies(List<Company> companies) {
+  /*  public String getCompanies(List<Company> companies) {
         if (companies.isEmpty()) {
             return Constants.NOTHING_FOUND_MSG;
         } else {
-            System.out.println("Companies according to your request: \n");
+            System.out.println("<Companies according to your request: > \n");
             StringBuilder stringBuilder = new StringBuilder();
             companies.forEach(company -> stringBuilder.append("ID: ")
                     .append(company.getIdCompany())
@@ -52,7 +55,7 @@ public class CompanyReadService {
             );
             return stringBuilder.toString();
         }
-    }
+    }*/
 }
 
 

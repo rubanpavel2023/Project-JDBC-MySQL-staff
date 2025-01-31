@@ -25,7 +25,7 @@ public class CompanyUpdateService {
     }
 
     public String updateCompany() {
-        companies = readService.readCompanyFromUpdateAndDelete();
+        companies = readService.readCompanyForUpdateAndDelete();
         choiceCompany = CompanySelectionView.selectCompany(companies);
         if (choiceCompany == null) {
             return Constants.NOTHING_FOUND_MSG;
@@ -40,7 +40,7 @@ public class CompanyUpdateService {
 
     private Company updateData(Company companyToUpdate) {
         String[] originalData = {companyToUpdate.getNameCompany()};
-        String[] data = CompanyUpdateView.getData();
+        String[] data = CompanyUpdateView.getNewData();
         String[] fields = {"nameCompany"};
         try {
             for (int i = 0; i < data.length && i < fields.length; i++) {

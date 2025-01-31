@@ -6,7 +6,7 @@ public class CompanyUpdateView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static String[] getData() {
+    public static String[] getNewData() {
 
         System.out.print("=> Enter new name company: ");
         String newNameCompany = scanner.nextLine();
