@@ -9,7 +9,7 @@ public class CompanyCreateView {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter company name: ");
+        System.out.print("=> Enter company name: ");
         String name = scanner.nextLine().trim();
 
         return new String[]{name};
