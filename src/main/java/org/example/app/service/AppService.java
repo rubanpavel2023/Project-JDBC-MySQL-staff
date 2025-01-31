@@ -65,12 +65,13 @@ public class AppService {
         if (!contains(menuChoices, choice)) {
             try {
                 throw new OptionException(Constants.INCORRECT_VALUE_MSG);
-            } catch (OptionException e) {
-                System.out.println(e.getMessage());
+            } catch (OptionException oe) {
+                System.out.println(oe.getMessage());
                 AppStarter.startApp();
             }
         }
     }
+
 
     public static boolean contains(final int[] options, final int value) {
         boolean result = false;
@@ -82,4 +83,5 @@ public class AppService {
         }
         return result;
     }
+
 }
