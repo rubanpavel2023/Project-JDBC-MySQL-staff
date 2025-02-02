@@ -1,6 +1,5 @@
 package org.example.app.service;
 
-import org.example.app.constants.Constants;
 import org.example.app.entity.Company;
 import org.example.app.repository.CompanyReadRepository;
 import org.example.app.view.CompanyReadView;
@@ -42,21 +41,6 @@ public class CompanyReadService {
 
     }
 
-  /*  public String getCompanies(List<Company> companies) {
-        if (companies.isEmpty()) {
-            return Constants.NOTHING_FOUND_MSG;
-        } else {
-            System.out.println("<Companies according to your request: > \n");
-            StringBuilder stringBuilder = new StringBuilder();
-            companies.forEach(company -> stringBuilder.append("ID: ")
-                    .append(company.getIdCompany())
-                    .append(", Name Company: ")
-                    .append(company.getNameCompany())
-                    .append("\n")
-            );
-            return stringBuilder.toString();
-        }
-    }*/
 }
 
 
