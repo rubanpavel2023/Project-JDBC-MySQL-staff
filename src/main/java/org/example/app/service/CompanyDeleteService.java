@@ -21,7 +21,7 @@ public class CompanyDeleteService {
 
     public void deleteCompany() {
         choiceCompanies = readService.readCompanyForUpdateAndDelete();
-        choiceCompany = CompanySelectionView.selectCompany(choiceCompanies);
+        choiceCompany = CompanySelectionView.selectCompanyForDelete(choiceCompanies);
         if (choiceCompany == null) {
             System.out.println(Constants.NOTHING_FOUND_MSG);
         } else

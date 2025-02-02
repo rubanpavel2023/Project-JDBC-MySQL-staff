@@ -26,7 +26,7 @@ public class CompanyUpdateService {
 
     public String updateCompany() {
         companies = readService.readCompanyForUpdateAndDelete();
-        choiceCompany = CompanySelectionView.selectCompany(companies);
+        choiceCompany = CompanySelectionView.selectCompanyForUpdate(companies);
         if (choiceCompany == null) {
             return Constants.NOTHING_FOUND_MSG;
         }
