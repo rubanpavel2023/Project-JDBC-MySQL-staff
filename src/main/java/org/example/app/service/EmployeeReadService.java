@@ -3,7 +3,7 @@ package org.example.app.service;
 import org.example.app.entity.EmployeeDTO;
 import org.example.app.repository.EmployeeReadRepository;
 import org.example.app.view.EmployeeReadView;
-import org.example.app.view.EntitySearchView;
+import org.example.app.view.EmployeeSearchView;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ public class EmployeeReadService {
     }
 
     public String readEmployee() {
-        char choice = EntitySearchView.SelectAndSearchEntity();
-        if (choice == EntitySearchView.choiceCompleteList) {
+        char choice = EmployeeSearchView.selectEmployeeInitial();
+        if (choice == EmployeeSearchView.choiceCompleteList) {
             List<EmployeeDTO> allEmployees = repository.readAllEmployees();
             return view.getEmployeesInfo(allEmployees);
         } else {

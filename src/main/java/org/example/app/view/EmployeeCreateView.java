@@ -14,24 +14,22 @@ public class EmployeeCreateView {
         System.out.println("=> Enter firstName employee: ");
         while (true) {
             String firstName = scanner.nextLine();
-            if (firstName.matches("[a-zA-Z]+")) {
+            if (firstName.matches(Constants.FIRST_AND_LASTNAME_EMPLOYEE)) {
                 list.add(firstName);
                 break;
             } else {
-                System.out.println(Constants.INCORRECT_VALUE_MSG +
-                        "\n" + "Please enter only alphabetic characters");
+                System.out.println(Constants.WRONG_NAME_MSG);
             }
         }
 
         System.out.println("=> Enter lastName employee: ");
         while (true) {
             String lastName = scanner.nextLine();
-            if (lastName.matches("[a-zA-Z]+")) {
+            if (lastName.matches(Constants.FIRST_AND_LASTNAME_EMPLOYEE)) {
                 list.add(lastName);
                 break;
             } else {
-                System.out.println(Constants.INCORRECT_VALUE_MSG +
-                        "\n" + "Please enter only alphabetic characters");
+                System.out.println(Constants.WRONG_NAME_MSG);
             }
         }
 
@@ -39,7 +37,7 @@ public class EmployeeCreateView {
         System.out.println("=> Enter position employee: ");
         while (true) {
             String position = scanner.nextLine();
-            if (position.matches("[a-zA-Z]+")) {
+            if (position.matches(Constants.POSITION_EMPLOYEE)) {
                 list.add(position);
                 break;
             } else {
@@ -49,15 +47,19 @@ public class EmployeeCreateView {
         }
 
 
-        System.out.println("=> Enter email employee: ");
+        System.out.println("=> Enter email employee: " + "\n" +
+                "If email address is missing, click '0' ");
         while (true) {
             String email = scanner.nextLine();
-            if (email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+            if (email.matches(Constants.EMAIL_REGEX)) {
                 list.add(email);
                 break;
+            };
+            if (email.equals("0")) {
+                   list.add(Constants.EMAIL_NOT_FOUND_MSG);
+                   break;
             } else {
-                System.out.println(Constants.INCORRECT_VALUE_MSG +
-                        "\n" + "Invalid characters");
+                System.out.println(Constants.WRONG_EMAIL_MSG);
             }
         }
 
@@ -68,8 +70,7 @@ public class EmployeeCreateView {
                 list.add(idCompany);
                 break;
             } else {
-                System.out.println(Constants.INCORRECT_VALUE_MSG +
-                        "\n" + "Only numeric values are allowed to be entered.");
+                System.out.println(Constants.WRONG_ID_MSG);
             }
         }
         return list.toArray(new String[0]);
