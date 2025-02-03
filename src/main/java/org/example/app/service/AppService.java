@@ -1,21 +1,12 @@
 package org.example.app.service;
 
 import org.example.app.constants.Constants;
-import org.example.app.controller.CompanyCreateController;
-import org.example.app.controller.CompanyDeleteController;
-import org.example.app.controller.CompanyReadController;
-import org.example.app.controller.CompanyUpdateController;
+import org.example.app.controller.*;
 import org.example.app.exeptions.OptionException;
-import org.example.app.repository.CompanyCreateRepository;
+import org.example.app.repository.*;
 
-import org.example.app.repository.CompanyDeleteRepository;
-import org.example.app.repository.CompanyReadRepository;
-import org.example.app.repository.CompanyUpdateRepository;
 import org.example.app.utils.AppStarter;
-import org.example.app.view.CompanyCreateView;
-
-import org.example.app.view.CompanyReadView;
-import org.example.app.view.CompanyUpdateView;
+import org.example.app.view.*;
 
 
 public class AppService {
@@ -28,12 +19,21 @@ public class AppService {
         controller.createCompany();
     }
 
+    public void createEmployee() {
+        EmployeeCreateRepository repository = new EmployeeCreateRepository();
+        EmployeeCreateService createService = new EmployeeCreateService(repository);
+        EmployeeCreateView viewCreate = new EmployeeCreateView();
+        EmployeeCreateController controller = new EmployeeCreateController(viewCreate, createService);
+        controller.createEmployee();
+
+    }
+
     public void updateCompany() {
         CompanyUpdateRepository repositoryUpdate = new CompanyUpdateRepository();
         CompanyReadRepository repositoryRead = new CompanyReadRepository();
         CompanyReadView viewRead = new CompanyReadView();
         CompanyUpdateView viewUpdate = new CompanyUpdateView();
-        CompanyReadService readService = new CompanyReadService(repositoryRead, viewRead);
+        CompanyReadService readService = new CompanyReadService(repositoryRead,viewRead);
         CompanyUpdateService serviceUpdate = new CompanyUpdateService(repositoryUpdate, readService);
         CompanyUpdateController controller = new CompanyUpdateController(serviceUpdate, viewUpdate);
         controller.updateCompany();
@@ -43,17 +43,25 @@ public class AppService {
     public void readCompany() {
         CompanyReadRepository repositoryRead = new CompanyReadRepository();
         CompanyReadView viewRead = new CompanyReadView();
-        CompanyReadService serviceRead = new CompanyReadService(repositoryRead, viewRead);
+        CompanyReadService serviceRead = new CompanyReadService(repositoryRead,viewRead);
         CompanyReadController controller = new CompanyReadController(serviceRead, viewRead);
         controller.readCompany();
 
     }
 
+    public void readEmployee() {
+        EmployeeReadRepository repositoryRead = new EmployeeReadRepository();
+        EmployeeReadView viewRead = new EmployeeReadView();
+        EmployeeReadService serviceRead = new EmployeeReadService(repositoryRead,viewRead);
+        EmployeeReadController controller = new EmployeeReadController(serviceRead, viewRead);
+        controller.readEmployee();
+    }
+
     public void deleteCompany() {
         CompanyDeleteRepository repositoryDelete = new CompanyDeleteRepository();
-        CompanyReadView viewRead = new CompanyReadView();
         CompanyReadRepository repositoryRead = new CompanyReadRepository();
-        CompanyReadService serviceRead = new CompanyReadService(repositoryRead, viewRead);
+        CompanyReadView viewRead = new CompanyReadView();
+        CompanyReadService serviceRead = new CompanyReadService(repositoryRead,viewRead);
         CompanyDeleteService serviceDelete = new CompanyDeleteService(repositoryDelete, serviceRead);
         CompanyDeleteController controller = new CompanyDeleteController(serviceDelete);
         controller.deleteCompany();

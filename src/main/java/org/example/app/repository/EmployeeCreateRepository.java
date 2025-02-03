@@ -2,16 +2,16 @@ package org.example.app.repository;
 
 import org.example.app.constants.Constants;
 import org.example.app.database.DBConn;
-import org.example.app.entity.Employee;
+import org.example.app.entity.EmployeeDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class EmployeeCreateRepository {
-    public String createEmployees(Employee employeeToCreate) {
+    public String createEmployee(EmployeeDTO employeeToCreate) {
 
-        String sql = "INSERT INTO" + Constants.TABLE_EMPLOYEES +
+        String sql = "INSERT INTO " + Constants.TABLE_EMPLOYEES +
                 " (first_Name, last_Name, position, email, id_Company) " +
                 "VALUES(?, ?, ?, ?, ?)";
         try (Connection conn = DBConn.connect()) {

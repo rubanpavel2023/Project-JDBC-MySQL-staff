@@ -2,7 +2,7 @@ package org.example.app.repository;
 
 import org.example.app.constants.Constants;
 import org.example.app.database.DBConn;
-import org.example.app.entity.Employee;
+import org.example.app.entity.EmployeeDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,7 +46,7 @@ public class EmployeeUpdateRepository {
             return optionalEmployees.get();
 
         }
-    }*/
+    }
 
     public boolean updateEmployee(Employee employee) {
         if (employee == null) {
@@ -80,5 +80,5 @@ public class EmployeeUpdateRepository {
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
-    }
+    }*/
 }

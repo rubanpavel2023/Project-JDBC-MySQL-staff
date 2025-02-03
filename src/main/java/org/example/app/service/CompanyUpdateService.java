@@ -2,11 +2,9 @@ package org.example.app.service;
 
 import org.example.app.constants.Constants;
 import org.example.app.entity.Company;
-import org.example.app.repository.CompanyReadRepository;
 import org.example.app.repository.CompanyUpdateRepository;
 import org.example.app.view.CompanySelectionView;
 import org.example.app.view.CompanyUpdateView;
-import org.example.app.view.EntitySearchView;
 
 import java.lang.reflect.Method;
 import java.util.List;

@@ -1,39 +1,86 @@
 package org.example.app.view;
 
-import org.example.app.entity.Company;
-import org.example.app.entity.Employee;
+import org.example.app.constants.Constants;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeCreateView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static Employee getEmployeeDetails() {
-        Employee employeeToCreate = new Employee();
+    public String[] getData() {
+        List<String> list = new ArrayList<>();
+        System.out.println("=> Enter firstName employee: ");
+        while (true) {
+            String firstName = scanner.nextLine();
+            if (firstName.matches(Constants.FIRST_AND_LASTNAME_EMPLOYEE_REGEX)) {
+                list.add(firstName);
+                break;
+            } else {
+                System.out.println(Constants.WRONG_NAME_MSG);
+            }
+        }
 
-        System.out.println("Creating a new employee");
-        System.out.println("Enter employee firstName: ");
-        String firstName = scanner.nextLine();
-        employeeToCreate.setFirstName(firstName);
-
-        System.out.println("Enter employee lastName: ");
-        String lastName = scanner.nextLine();
-        employeeToCreate.setFirstName(lastName);
-
-        System.out.println("Enter employee position: ");
-        String position = scanner.nextLine();
-        employeeToCreate.setPosition(position);
-
-        System.out.println("Enter employee email: ");
-        String email = scanner.nextLine();
-        employeeToCreate.setEmail(email);
-
-        System.out.println("Enter employee idCompany: ");
-        int idCompany = scanner.nextInt();
-        employeeToCreate.setIdCompany(idCompany);
+        System.out.println("=> Enter lastName employee: ");
+        while (true) {
+            String lastName = scanner.nextLine();
+            if (lastName.matches(Constants.FIRST_AND_LASTNAME_EMPLOYEE_REGEX)) {
+                list.add(lastName);
+                break;
+            } else {
+                System.out.println(Constants.WRONG_NAME_MSG);
+            }
+        }
 
 
-        return employeeToCreate;
+        System.out.println("=> Enter position employee: ");
+        while (true) {
+            String position = scanner.nextLine();
+            if (position.matches(Constants.POSITION_EMPLOYEE_REGEX)) {
+                list.add(position);
+                break;
+            } else {
+                System.out.println(Constants.WRONG_NAME_MSG);
+            }
+        }
+
+
+        System.out.println("=> Enter email employee: " + "\n" +
+                "If email address is missing, click '0' ");
+        while (true) {
+            String email = scanner.nextLine();
+            if (email.matches(Constants.EMAIL_REGEX)) {
+                list.add(email);
+                break;
+            };
+            if (email.equals("0")) {
+                   list.add(Constants.EMAIL_NOT_FOUND_MSG);
+                   break;
+            } else {
+                System.out.println(Constants.WRONG_EMAIL_MSG);
+            }
+        }
+
+        System.out.println("=> Enter the company ID assigned to the employee: ");
+        while (true) {
+            String idCompany = scanner.nextLine();
+            if (idCompany.matches(Constants.ID_COMPANY_REGEX)) {
+                list.add(idCompany);
+                break;
+            } else {
+                System.out.println(Constants.WRONG_ID_MSG);
+            }
+        }
+        return list.toArray(new String[0]);
+
+
+    }
+
+    public void getOutput(String output) {
+        System.out.println(output);
     }
 }
+
+
 

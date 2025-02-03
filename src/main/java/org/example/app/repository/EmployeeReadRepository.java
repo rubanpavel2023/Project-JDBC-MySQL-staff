@@ -1,9 +1,8 @@
 package org.example.app.repository;
 
-import org.example.app.constants.Constants;
 import org.example.app.database.DBConn;
-import org.example.app.entity.Employee;
-import org.example.app.view.EntitySearchView;
+import org.example.app.entity.EmployeeDTO;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,47 +15,68 @@ import java.util.Optional;
 
 public class EmployeeReadRepository {
 
-    /*перенести метод readEmployees в контроллер*/
-    public void readEmployees(List<Employee> employees) {
-        System.out.println("Below is the list of employees based on your query:");
+    public List<EmployeeDTO> readEmployeesByLastNameStartsWith(char initial) {
+        List<EmployeeDTO> employees = new ArrayList<>();
+        String sql = "SELECT employees.id_Employee, employees.first_Name, employees.last_Name, employees.position, employees.email, employees.id_Company, companies.name_Company " +
+                "FROM employees " +
+                "JOIN companies ON employees.id_Company = companies.id_Company " +
+                "WHERE employees.last_Name LIKE ?";
 
-        employees.forEach(employee -> System.out.println(
-                "ID: " + employee.getIdEmployee() +
-                        ", First Name: " + employee.getFirstName() +
-                        ", Last Name: " + employee.getLastName() +
-                        ", Position: " + employee.getPosition() +
-                        ", Email: " + employee.getEmail() +
-                        ", Company ID: " + employee.getIdCompany()
-        ));
+
+        try (Connection conn = DBConn.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, initial + "%");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                EmployeeDTO employee = new EmployeeDTO();
+                employee.setIdEmployee(rs.getInt("id_Employee"));
+                employee.setFirstName(rs.getString("first_Name"));
+                employee.setLastName(rs.getString("last_Name"));
+                employee.setPosition(rs.getString("position"));
+                employee.setEmail(rs.getString("email"));
+                employee.setIdCompany(rs.getInt("id_Company"));
+                employee.setNameCompany(rs.getString("name_Company"));
+                employees.add(employee);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Database error: " + e.getMessage(), e);
+        }
+
+        return employees.isEmpty() ? Collections.emptyList() : employees;
     }
 
 
-    public List<Employee> readEmployeesByLastNameStartsWith(char initial) {
-        List<Employee> employees = new ArrayList<>();
-        String sql = "SELECT * FROM " + Constants.TABLE_EMPLOYEES + " WHERE last_Name LIKE ?";
+    public List<EmployeeDTO> readAllEmployees() {
+        List<EmployeeDTO> employees = new ArrayList<>();
+        String sqlAll = "SELECT employees.id_Employee, employees.first_Name, employees.last_Name, employees.position, employees.email, employees.id_Company, companies.name_Company " +
+                "FROM employees " +
+                "JOIN companies ON employees.id_Company = companies.id_Company";
+
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
                 throw new RuntimeException("Failed to establish database connection");
             }
-            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setString(1, initial + "%");
+            try (PreparedStatement pstmt = conn.prepareStatement(sqlAll)) {
                 ResultSet rs = pstmt.executeQuery();
                 while (rs.next()) {
-                    Employee employee = new Employee();
+                    EmployeeDTO employee = new EmployeeDTO();
                     employee.setIdEmployee(rs.getInt("id_Employee"));
                     employee.setFirstName(rs.getString("first_Name"));
                     employee.setLastName(rs.getString("last_Name"));
                     employee.setPosition(rs.getString("position"));
                     employee.setEmail(rs.getString("email"));
                     employee.setIdCompany(rs.getInt("id_Company"));
+                    employee.setNameCompany(rs.getString("name_Company"));
                     employees.add(employee);
                 }
             }
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
+        return Optional.ofNullable(employees.isEmpty() ? null : employees)
+                .orElse(Collections.emptyList());
 
-        return Optional.ofNullable(employees.isEmpty() ? null : employees).orElse(Collections.emptyList());
+
     }
 }
 

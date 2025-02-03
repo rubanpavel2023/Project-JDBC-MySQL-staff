@@ -10,7 +10,7 @@ public class CompanyReadView {
         System.out.println(output);
     }
 
-    public String getCompanies(List<Company> companies) {
+    public String getCompaniesInfo(List<Company> companies) {
         if (companies.isEmpty()) {
             return Constants.NOTHING_FOUND_MSG;
         } else {

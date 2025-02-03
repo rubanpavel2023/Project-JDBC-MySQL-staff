@@ -1,11 +1,11 @@
 package org.example.app.view;
 
-import org.example.app.entity.Employee;
+import org.example.app.entity.EmployeeDTO;
 
 import java.util.Scanner;
 
 public class EmployeeUpdateView {
-    private static final Scanner scanner = new Scanner(System.in);
+    /*private static final Scanner scanner = new Scanner(System.in);
 
     public static Employee getUpdatedEmployee(Employee originalEmployee) {
 
@@ -51,7 +51,7 @@ public class EmployeeUpdateView {
                 !original.getPosition().equals(updated.getPosition()) ||
                 !original.getEmail().equals(updated.getEmail()) ||
                 original.getIdCompany() != updated.getIdCompany();
-    }
+    }*/
 }
 
 

@@ -26,15 +26,15 @@ public class AppView {
     private void showMenu() {
         System.out.print("""
                 
-                ______ MENU ___________
-                1 - Create Employee
-                2 - Create Company
-                3 - Read Employee
-                4 - Read Company
-                5 - Update Employee
-                6 - Update Company
-                7 - Delete Employee
-                8 - Delete Company
+                ___________ MENU _______________________
+                    CREATE        UPDATE
+                1 - Employee      5 - Employee
+                2 - Company       6 - Company
+                
+                    READ          DELETE
+                3 - Employee      7 - Employee
+                4 - Company       8 - Company
+                
                 0 - Close the App.
                 _______________________
                 """);
