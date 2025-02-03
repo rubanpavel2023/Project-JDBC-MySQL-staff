@@ -2,7 +2,7 @@ package org.example.app.repository;
 
 import org.example.app.constants.Constants;
 import org.example.app.database.DBConn;
-import org.example.app.entity.Employee;
+import org.example.app.entity.EmployeeDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 
 public class EmployeeDeleteRepository {
-    public boolean deleteEmployeeByLastName(Employee employeeToDelete) {
+   /* public boolean deleteEmployeeByLastName(Employee employeeToDelete) {
         String sql = "DELETE FROM " + Constants.TABLE_EMPLOYEES + " WHERE last_Name = ? AND id_Employee = ?";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
@@ -28,6 +28,6 @@ public class EmployeeDeleteRepository {
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
-    }
+    }*/
 }
 

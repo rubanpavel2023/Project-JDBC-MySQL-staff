@@ -33,10 +33,10 @@ public class CompanyReadService {
         char choice = EntitySearchView.SelectAndSearchEntity();
         if (choice == EntitySearchView.choiceCompleteList) {
             List<Company> allCompanies = repository.readAllCompanies();
-            return view.getCompanies(allCompanies);
+            return view.getCompaniesInfo(allCompanies);
         } else {
             List<Company> selectedCompanies = repository.readCompaniesByLastNameStartsWith(choice);
-            return view.getCompanies(selectedCompanies);
+            return view.getCompaniesInfo(selectedCompanies);
         }
 
     }

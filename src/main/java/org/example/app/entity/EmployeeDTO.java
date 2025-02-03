@@ -2,13 +2,15 @@ package org.example.app.entity;
 
 import java.util.Objects;
 
-public class Employee {
+public class EmployeeDTO {
     private int idEmployee;
     private String firstName;
     private String lastName;
     private String position;
     private String email;
     private int idCompany;
+    private String nameCompany;
+
 
     public int getIdEmployee() {
         return idEmployee;
@@ -58,15 +60,24 @@ public class Employee {
         this.idCompany = idCompany;
     }
 
+    public String getNameCompany() {
+        return nameCompany;
+    }
+
+    public void setNameCompany(String nameCompany) {
+        this.nameCompany = nameCompany;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Employee employee)) return false;
-        return getIdEmployee() == employee.getIdEmployee() && getIdCompany() == employee.getIdCompany() && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getPosition(), employee.getPosition()) && Objects.equals(getEmail(), employee.getEmail());
+        if (!(o instanceof EmployeeDTO that)) return false;
+        return getIdEmployee() == that.getIdEmployee() && getIdCompany() == that.getIdCompany() && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getPosition(), that.getPosition()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getNameCompany(), that.getNameCompany());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdEmployee(), getFirstName(), getLastName(), getPosition(), getEmail(), getIdCompany());
+        return Objects.hash(getIdEmployee(), getFirstName(), getLastName(), getPosition(), getEmail(), getIdCompany(), getNameCompany());
     }
 }
+

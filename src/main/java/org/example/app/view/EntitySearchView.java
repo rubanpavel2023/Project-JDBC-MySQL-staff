@@ -31,7 +31,7 @@ public class EntitySearchView {
             while (true) {
                 try {
                     String select = scanner.nextLine();
-                    if (select.length() == 1 && select.matches("[a-zA-Z0-9+\\-]")) {
+                    if (select.length() == 1 && select.matches("[a-zA-Z]")) {
                         return select.charAt(0);
                     } else {
                         System.out.println(Constants.INCORRECT_VALUE_MSG);

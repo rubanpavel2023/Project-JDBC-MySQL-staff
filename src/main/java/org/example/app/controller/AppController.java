@@ -19,7 +19,9 @@ public class AppController {
 
     private void filterChoice(int choice) {
         switch (choice) {
+            case 1 -> service.createEmployee();
             case 2 -> service.createCompany();
+            case 3 -> service.readEmployee();
             case 4 -> service.readCompany();
             case 6 -> service.updateCompany();
             case 8 -> service.deleteCompany();
