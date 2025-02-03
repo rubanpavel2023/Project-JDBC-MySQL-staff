@@ -14,7 +14,7 @@ public class EmployeeCreateView {
         System.out.println("=> Enter firstName employee: ");
         while (true) {
             String firstName = scanner.nextLine();
-            if (firstName.matches(Constants.FIRST_AND_LASTNAME_EMPLOYEE)) {
+            if (firstName.matches(Constants.FIRST_AND_LASTNAME_EMPLOYEE_REGEX)) {
                 list.add(firstName);
                 break;
             } else {
@@ -25,7 +25,7 @@ public class EmployeeCreateView {
         System.out.println("=> Enter lastName employee: ");
         while (true) {
             String lastName = scanner.nextLine();
-            if (lastName.matches(Constants.FIRST_AND_LASTNAME_EMPLOYEE)) {
+            if (lastName.matches(Constants.FIRST_AND_LASTNAME_EMPLOYEE_REGEX)) {
                 list.add(lastName);
                 break;
             } else {
@@ -37,12 +37,11 @@ public class EmployeeCreateView {
         System.out.println("=> Enter position employee: ");
         while (true) {
             String position = scanner.nextLine();
-            if (position.matches(Constants.POSITION_EMPLOYEE)) {
+            if (position.matches(Constants.POSITION_EMPLOYEE_REGEX)) {
                 list.add(position);
                 break;
             } else {
-                System.out.println(Constants.INCORRECT_VALUE_MSG +
-                        "\n" + "Please enter only alphabetic characters");
+                System.out.println(Constants.WRONG_NAME_MSG);
             }
         }
 
@@ -66,7 +65,7 @@ public class EmployeeCreateView {
         System.out.println("=> Enter the company ID assigned to the employee: ");
         while (true) {
             String idCompany = scanner.nextLine();
-            if (idCompany.matches("[0-9]+")) {
+            if (idCompany.matches(Constants.ID_COMPANY_REGEX)) {
                 list.add(idCompany);
                 break;
             } else {

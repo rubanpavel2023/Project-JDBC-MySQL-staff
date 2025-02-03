@@ -14,10 +14,10 @@ public class CompanyCreateView {
             System.out.println("\n" + "=> Enter company name: ");
             String name = scanner.nextLine().trim();
 
-            if (name.matches(Constants.NAME_COMPANY)) {
+            if (name.matches(Constants.NAME_COMPANY_REGEX)) {
                 return new String[]{name};
             } else {
-                System.out.println(Constants.WRONG_NAME_MSG);
+                System.out.println(Constants.WRONG_NAME_COMPANY_MSG);
             }
         }
 

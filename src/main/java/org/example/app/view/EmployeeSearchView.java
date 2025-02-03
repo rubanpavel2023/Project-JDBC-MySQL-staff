@@ -17,7 +17,7 @@ public class EmployeeSearchView {
 
         while (true) {
             String select = scanner.nextLine();
-            if (select.length() == 1 && select.matches("[a-zA-Z+]")) {
+            if (select.length() == 1 && select.matches(Constants.SEARCH_ENTITY_REGEX)) {
                 return select.charAt(0);
             }
             if (select.length() == 1 && select.equals("0")) {
@@ -25,7 +25,7 @@ public class EmployeeSearchView {
             }
             else {
                 System.out.println(Constants.INCORRECT_VALUE_MSG + "\n"
-                        +"Please enter one letter character");
+                        +"Please enter one uppercase letter ");
             }
 
         }
