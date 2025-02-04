@@ -12,7 +12,7 @@ public class EmployeeCreateRepository {
     public String createEmployee(Employee employeeToCreate) {
 
         String sql = "INSERT INTO " + Constants.TABLE_EMPLOYEES +
-                " (first_Name, last_Name, position, email, id_Company) " +
+                " (employees.first_Name, employees.last_Name, employees.position, employees.email, employees.id_Company) " +
                 "VALUES(?, ?, ?, ?, ?)";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {

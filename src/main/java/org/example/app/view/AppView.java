@@ -36,7 +36,7 @@ public class AppView {
                 4 - Company       8 - Company
                 
                 0 - Close the App.
-                _______________________
+                ________________________________________
                 """);
 
     }

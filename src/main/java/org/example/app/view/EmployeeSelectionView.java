@@ -19,7 +19,14 @@ public class EmployeeSelectionView {
         }
         if (employees.size() == 1) {
             System.out.println("<Employee according to your request: > \n" +
-                    employees.get(0).getNameCompany());
+                    ") First Name: "+ employees.get(0).getFirstName() +
+                    ", Last Name: " + employees.get(0).getLastName()+
+                    ", Position: " + employees.get(0).getPosition()+
+                    ", Email: " + employees.get(0).getEmail()+
+                    ", Company ID: " + employees.get(0).getIdCompany() +
+                    ", Company Name: " + employees.get(0).getNameCompany()
+
+            );
             return employees.get(0);
         }
         System.out.println("<Employees according to your request: > \n");

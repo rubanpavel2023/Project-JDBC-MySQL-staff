@@ -16,8 +16,6 @@ import java.util.Optional;
 public class EmployeeReadRepository {
 
 
-
-
     public List<Employee> readEmployeesByLastNameStartsWith(char initial) {
         List<Employee> employees = new ArrayList<>();
         String sql = "SELECT employees.id_Employee, employees.first_Name, employees.last_Name, employees.position, employees.email, employees.id_Company, companies.name_Company " +
@@ -43,8 +41,9 @@ public class EmployeeReadRepository {
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
+        return Optional.ofNullable(employees.isEmpty() ? null : employees)
+                .orElse(Collections.emptyList());
 
-        return employees.isEmpty() ? Collections.emptyList() : employees;
     }
 
 
