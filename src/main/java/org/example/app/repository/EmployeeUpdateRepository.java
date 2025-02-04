@@ -12,7 +12,8 @@ import java.sql.SQLException;
 public class EmployeeUpdateRepository {
     public String updateEmployee(Employee employeeToUpdate) {
         String sql = "UPDATE " + Constants.TABLE_EMPLOYEES +
-                " SET first_Name = ?, last_Name = ?, position = ?, email = ?, id_Company = ? WHERE id_Employee = ?";
+                " SET first_Name = ?, employees.last_Name = ?, employees.position = ?, employees.email = ?, " +
+                "employees.id_Company = ? WHERE employees.id_Employee = ?";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
                 throw new RuntimeException("Failed to establish database connection");
