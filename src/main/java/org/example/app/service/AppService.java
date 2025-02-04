@@ -32,18 +32,32 @@ public class AppService {
         CompanyUpdateRepository repositoryUpdate = new CompanyUpdateRepository();
         CompanyReadRepository repositoryRead = new CompanyReadRepository();
         CompanyReadView viewRead = new CompanyReadView();
+        CompanyReadService readService = new CompanyReadService(repositoryRead, viewRead);
         CompanyUpdateView viewUpdate = new CompanyUpdateView();
-        CompanyReadService readService = new CompanyReadService(repositoryRead,viewRead);
         CompanyUpdateService serviceUpdate = new CompanyUpdateService(repositoryUpdate, readService);
         CompanyUpdateController controller = new CompanyUpdateController(serviceUpdate, viewUpdate);
         controller.updateCompany();
 
     }
 
+    public void updateEmployee() {
+        EmployeeUpdateRepository repositoryUpdate = new EmployeeUpdateRepository();
+        EmployeeReadRepository repositoryRead = new EmployeeReadRepository();
+        EmployeeReadView viewRead = new EmployeeReadView();
+        EmployeeUpdateView viewUpdate = new EmployeeUpdateView();
+        EmployeeReadService serviceRead = new EmployeeReadService(repositoryRead, viewRead);
+        EmployeeUpdateService serviceUpdate = new EmployeeUpdateService(repositoryUpdate, serviceRead);
+        EmployeeUpdateController controller = new EmployeeUpdateController(serviceUpdate, viewUpdate);
+        controller.updateEmployee();
+
+
+    }
+
+
     public void readCompany() {
         CompanyReadRepository repositoryRead = new CompanyReadRepository();
         CompanyReadView viewRead = new CompanyReadView();
-        CompanyReadService serviceRead = new CompanyReadService(repositoryRead,viewRead);
+        CompanyReadService serviceRead = new CompanyReadService(repositoryRead, viewRead);
         CompanyReadController controller = new CompanyReadController(serviceRead, viewRead);
         controller.readCompany();
 
@@ -52,7 +66,7 @@ public class AppService {
     public void readEmployee() {
         EmployeeReadRepository repositoryRead = new EmployeeReadRepository();
         EmployeeReadView viewRead = new EmployeeReadView();
-        EmployeeReadService serviceRead = new EmployeeReadService(repositoryRead,viewRead);
+        EmployeeReadService serviceRead = new EmployeeReadService(repositoryRead, viewRead);
         EmployeeReadController controller = new EmployeeReadController(serviceRead, viewRead);
         controller.readEmployee();
     }
@@ -61,7 +75,7 @@ public class AppService {
         CompanyDeleteRepository repositoryDelete = new CompanyDeleteRepository();
         CompanyReadRepository repositoryRead = new CompanyReadRepository();
         CompanyReadView viewRead = new CompanyReadView();
-        CompanyReadService serviceRead = new CompanyReadService(repositoryRead,viewRead);
+        CompanyReadService serviceRead = new CompanyReadService(repositoryRead, viewRead);
         CompanyDeleteService serviceDelete = new CompanyDeleteService(repositoryDelete, serviceRead);
         CompanyDeleteController controller = new CompanyDeleteController(serviceDelete);
         controller.deleteCompany();

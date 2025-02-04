@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class CompanySelectionView {
 
     private static int i;
-    private static final Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
 
     public static Company selectCompanyForUpdate(List<Company> companies) {

@@ -1,7 +1,7 @@
 package org.example.app.repository;
 
 import org.example.app.database.DBConn;
-import org.example.app.entity.EmployeeDTO;
+import org.example.app.entity.Employee;
 
 
 import java.sql.Connection;
@@ -15,20 +15,22 @@ import java.util.Optional;
 
 public class EmployeeReadRepository {
 
-    public List<EmployeeDTO> readEmployeesByLastNameStartsWith(char initial) {
-        List<EmployeeDTO> employees = new ArrayList<>();
+
+
+
+    public List<Employee> readEmployeesByLastNameStartsWith(char initial) {
+        List<Employee> employees = new ArrayList<>();
         String sql = "SELECT employees.id_Employee, employees.first_Name, employees.last_Name, employees.position, employees.email, employees.id_Company, companies.name_Company " +
                 "FROM employees " +
                 "JOIN companies ON employees.id_Company = companies.id_Company " +
                 "WHERE employees.last_Name LIKE ?";
-
 
         try (Connection conn = DBConn.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, initial + "%");
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                EmployeeDTO employee = new EmployeeDTO();
+                Employee employee = new Employee();
                 employee.setIdEmployee(rs.getInt("id_Employee"));
                 employee.setFirstName(rs.getString("first_Name"));
                 employee.setLastName(rs.getString("last_Name"));
@@ -46,8 +48,8 @@ public class EmployeeReadRepository {
     }
 
 
-    public List<EmployeeDTO> readAllEmployees() {
-        List<EmployeeDTO> employees = new ArrayList<>();
+    public List<Employee> readAllEmployees() {
+        List<Employee> employees = new ArrayList<>();
         String sqlAll = "SELECT employees.id_Employee, employees.first_Name, employees.last_Name, employees.position, employees.email, employees.id_Company, companies.name_Company " +
                 "FROM employees " +
                 "JOIN companies ON employees.id_Company = companies.id_Company";
@@ -59,7 +61,7 @@ public class EmployeeReadRepository {
             try (PreparedStatement pstmt = conn.prepareStatement(sqlAll)) {
                 ResultSet rs = pstmt.executeQuery();
                 while (rs.next()) {
-                    EmployeeDTO employee = new EmployeeDTO();
+                    Employee employee = new Employee();
                     employee.setIdEmployee(rs.getInt("id_Employee"));
                     employee.setFirstName(rs.getString("first_Name"));
                     employee.setLastName(rs.getString("last_Name"));

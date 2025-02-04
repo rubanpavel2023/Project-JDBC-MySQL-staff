@@ -38,7 +38,7 @@ public class CompanyUpdateService {
 
     private Company updateData(Company companyToUpdate) {
         String[] originalData = {companyToUpdate.getNameCompany()};
-        String[] data = CompanyUpdateView.getNewData();
+        String[] data = CompanyUpdateView.getNewDataCompany();
         String[] fields = {"nameCompany"};
         try {
             for (int i = 0; i < data.length && i < fields.length; i++) {

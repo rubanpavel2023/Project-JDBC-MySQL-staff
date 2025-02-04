@@ -1,10 +1,8 @@
 package org.example.app.service;
 
 import org.example.app.constants.Constants;
-import org.example.app.entity.Company;
-import org.example.app.entity.EmployeeDTO;
+import org.example.app.entity.Employee;
 import org.example.app.exeptions.CreateException;
-import org.example.app.repository.CompanyCreateRepository;
 import org.example.app.repository.EmployeeCreateRepository;
 
 import java.util.HashMap;
@@ -45,8 +43,8 @@ public class EmployeeCreateService {
     }
 
 
-    private EmployeeDTO convertData(String[] data) {
-        EmployeeDTO employee = new EmployeeDTO();
+    private Employee convertData(String[] data) {
+        Employee employee = new Employee();
         employee.setFirstName(data[0]);
         employee.setLastName(data[1]);
         employee.setPosition(data[2]);
