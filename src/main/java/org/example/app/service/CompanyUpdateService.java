@@ -28,7 +28,7 @@ public class CompanyUpdateService {
         if (choiceCompany == null) {
             return Constants.NOTHING_FOUND_MSG;
         }
-        Company updatedCompany = updateData(choiceCompany);
+        Company updatedCompany = getUpdateCompany(choiceCompany);
         if (updatedCompany == null) {
             return Constants.SAME_NAME_ENTERED_MSG;
         } else return repositoryUpdate.updateCompany(updatedCompany);
@@ -36,7 +36,7 @@ public class CompanyUpdateService {
     }
 
 
-    private Company updateData(Company companyToUpdate) {
+    private Company getUpdateCompany(Company companyToUpdate) {
         String[] originalData = {companyToUpdate.getNameCompany()};
         String[] data = CompanyUpdateView.getNewDataCompany();
         String[] fields = {"nameCompany"};

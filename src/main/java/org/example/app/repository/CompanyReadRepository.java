@@ -66,6 +66,29 @@ public class CompanyReadRepository {
 
     }
 
+    public List<Integer> readIdCompanies() {
+        String sql = "SELECT DISTINCT id_Company " + "FROM " + Constants.TABLE_COMPANIES;
+        List<Integer> allIdCompanies = new ArrayList<>();
+
+        try (Connection conn = DBConn.connect()) {
+            if (conn == null) {
+                throw new RuntimeException("Failed to establish database connection");
+            }
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                ResultSet rs = pstmt.executeQuery();
+                while (rs.next()) {
+                    allIdCompanies.add(rs.getInt("id_Company"));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Database error: " + e.getMessage(), e);
+        }
+        return Optional.ofNullable(allIdCompanies.isEmpty() ? null : allIdCompanies)
+                .orElse(Collections.emptyList());
+
+
+    }
+
 }
 
 
