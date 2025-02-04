@@ -2,11 +2,14 @@ package org.example.app.service;
 
 import org.example.app.constants.Constants;
 import org.example.app.entity.Employee;
+import org.example.app.repository.CompanyReadRepository;
+import org.example.app.repository.EmployeeReadRepository;
 import org.example.app.repository.EmployeeUpdateRepository;
 import org.example.app.view.EmployeeSelectionView;
 import org.example.app.view.EmployeeUpdateView;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeUpdateService {
@@ -27,14 +30,14 @@ public class EmployeeUpdateService {
         if (choiceEmployee == null) {
             return Constants.NOTHING_FOUND_MSG;
         }
-        Employee updatedEmployee = updateData(choiceEmployee);
+        Employee updatedEmployee = getUpdateEmployee(choiceEmployee);
         if (updatedEmployee == null) {
             return Constants.SAME_NAME_ENTERED_MSG;
         } else return repositoryUpdate.updateEmployee(updatedEmployee);
 
     }
 
-    private Employee updateData(Employee employeeToUpdate) {
+    private Employee getUpdateEmployee(Employee employeeToUpdate) {
         String[] originalData = {employeeToUpdate.getFirstName(), employeeToUpdate.getLastName(),
                 employeeToUpdate.getPosition(), employeeToUpdate.getEmail(), Integer.toString(employeeToUpdate.getIdCompany())};
         String[] data = EmployeeUpdateView.getNewDataEmployee();
@@ -63,5 +66,15 @@ public class EmployeeUpdateService {
         }
         return employeeToUpdate;
     }
+
+    public static boolean isCompanyIdExists(int idCompany) {
+        CompanyReadRepository repository = new CompanyReadRepository();
+        List<Integer> idCompanies = new ArrayList();
+        idCompanies = repository.readIdCompanies();
+        if (idCompanies.contains(idCompany)) {
+            return true;
+        } else return false;
+    }
 }
+
 

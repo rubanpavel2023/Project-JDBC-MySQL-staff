@@ -1,6 +1,7 @@
 package org.example.app.view;
 
 import org.example.app.constants.Constants;
+import org.example.app.service.EmployeeUpdateService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,28 +65,36 @@ public class EmployeeUpdateView {
             }
         }
 
+
         System.out.println("=> Enter the new company ID assigned to the employee: ");
         while (true) {
             String idCompany = scanner.nextLine();
-            if (idCompany.matches(Constants.ID_COMPANY_REGEX)) {
-                list.add(idCompany);
-                break;
-            } else {
+            try {
+                int parsedIdCompany = Integer.parseInt(idCompany);
+
+                if (!idCompany.matches(Constants.ID_COMPANY_REGEX)) {
+                    System.out.println(Constants.WRONG_ID_MSG);
+                    continue;
+                }
+                if (!EmployeeUpdateService.isCompanyIdExists(parsedIdCompany)) {
+                    System.out.println("<The company with the entered ID is not in the database>");
+                } else {
+                    list.add(idCompany);
+                    break;
+                }
+            } catch (NumberFormatException e) {
                 System.out.println(Constants.WRONG_ID_MSG);
             }
         }
-        return list.toArray(new String[0]);
-
-
+        return list.toArray(new String[5]);
     }
+
 
     public void getOutput(String output) {
         System.out.println(output);
     }
 
-
 }
-
 
 
 
