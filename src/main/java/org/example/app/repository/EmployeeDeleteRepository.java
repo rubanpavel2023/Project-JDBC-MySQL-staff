@@ -2,7 +2,7 @@ package org.example.app.repository;
 
 import org.example.app.constants.Constants;
 import org.example.app.database.DBConn;
-import org.example.app.entity.EmployeeDTO;
+import org.example.app.entity.Employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

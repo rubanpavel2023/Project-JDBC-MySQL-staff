@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeCreateView {
-    private static final Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public String[] getData() {
         List<String> list = new ArrayList<>();

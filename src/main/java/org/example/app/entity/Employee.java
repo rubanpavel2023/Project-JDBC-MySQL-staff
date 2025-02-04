@@ -1,7 +1,7 @@
 package org.example.app.entity;
 
 
-public class EmployeeDTO {
+public class Employee {
     private int idEmployee;
     private String firstName;
     private String lastName;
@@ -63,7 +63,7 @@ public class EmployeeDTO {
         return nameCompany;
     }
 
-    public void setNameCompany(String nameCompany) {
+   public void setNameCompany(String nameCompany) {
         this.nameCompany = nameCompany;
     }
 

@@ -1,6 +1,6 @@
 package org.example.app.service;
 
-import org.example.app.entity.EmployeeDTO;
+import org.example.app.entity.Employee;
 import org.example.app.repository.EmployeeReadRepository;
 import org.example.app.view.EmployeeReadView;
 import org.example.app.view.EmployeeSearchView;
@@ -18,13 +18,24 @@ public class EmployeeReadService {
         this.view = view;
     }
 
+    public List<Employee> readEmployeeForUpdateAndDelete() {
+        char choice = EmployeeSearchView.selectEmployeeInitial();
+        if (choice == EmployeeSearchView.choiceCompleteList) {
+            List<Employee> allEmployees = repository.readAllEmployees();
+            return allEmployees;
+        } else {
+            List<Employee> choiceEmployees = repository.readEmployeesByLastNameStartsWith(choice);
+            return choiceEmployees;
+        }
+    }
+
     public String readEmployee() {
         char choice = EmployeeSearchView.selectEmployeeInitial();
         if (choice == EmployeeSearchView.choiceCompleteList) {
-            List<EmployeeDTO> allEmployees = repository.readAllEmployees();
+            List<Employee> allEmployees = repository.readAllEmployees();
             return view.getEmployeesInfo(allEmployees);
         } else {
-            List<EmployeeDTO> selectedEmployees = repository.readEmployeesByLastNameStartsWith(choice);
+            List<Employee> selectedEmployees = repository.readEmployeesByLastNameStartsWith(choice);
             return view.getEmployeesInfo(selectedEmployees);
         }
 
