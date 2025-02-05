@@ -12,11 +12,11 @@ import java.sql.SQLException;
 public class EmployeeUpdateRepository {
     public String updateEmployee(Employee employeeToUpdate) {
         String sql = "UPDATE " + Constants.TABLE_EMPLOYEES +
-                " SET first_Name = ?, employees.last_Name = ?, employees.position = ?, employees.email = ?, " +
-                "employees.id_Company = ? WHERE employees.id_Employee = ?";
+                " SET first_Name = ?, last_Name = ?, position = ?, email = ?, " +
+                " id_Company = ? WHERE id_Employee = ?";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
+                return Constants.DATABASE_CONNECTION_FAILED_MSG;
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, employeeToUpdate.getFirstName());
@@ -29,7 +29,13 @@ public class EmployeeUpdateRepository {
                 return Constants.DATA_EMPLOYEE_UPDATE_MSG;
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Database error: " + e.getMessage(), e);
+            System.err.println("Database error occurred: " + e.getMessage());
+            return "Database error occurred: " + e.getMessage();
+        } catch (RuntimeException e) {
+            System.err.println("Unexpected error: " + e.getMessage());
+            return "Unexpected error: " + e.getMessage();
         }
     }
 }
+
+

@@ -22,7 +22,8 @@ public class CompanyReadRepository {
         String sql = "SELECT * FROM " + Constants.TABLE_COMPANIES + " WHERE name_Company LIKE ?";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
+                System.err.println(Constants.DATABASE_CONNECTION_FAILED_MSG);
+                return Collections.emptyList();
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, initial + "%");
@@ -35,7 +36,9 @@ public class CompanyReadRepository {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Database error: " + e.getMessage(), e);
+            System.err.println("Database error occurred: " + e.getMessage());
+        } catch (RuntimeException e) {
+            System.err.println("Unexpected error: " + e.getMessage());
         }
         return Optional.ofNullable(companies.isEmpty() ? null : companies)
                 .orElse(Collections.emptyList());
@@ -47,7 +50,8 @@ public class CompanyReadRepository {
         String sqlAll = "SELECT * FROM " + Constants.TABLE_COMPANIES;
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
+                System.err.println(Constants.DATABASE_CONNECTION_FAILED_MSG);
+                return Collections.emptyList();
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sqlAll)) {
                 ResultSet rs = pstmt.executeQuery();
@@ -59,7 +63,9 @@ public class CompanyReadRepository {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Database error: " + e.getMessage(), e);
+            System.err.println("Database error occurred: " + e.getMessage());
+        } catch (RuntimeException e) {
+            System.err.println("Unexpected error: " + e.getMessage());
         }
         return Optional.ofNullable(companies.isEmpty() ? null : companies)
                 .orElse(Collections.emptyList());
@@ -69,10 +75,10 @@ public class CompanyReadRepository {
     public List<Integer> readIdCompanies() {
         String sql = "SELECT DISTINCT id_Company " + "FROM " + Constants.TABLE_COMPANIES;
         List<Integer> allIdCompanies = new ArrayList<>();
-
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
+                System.err.println(Constants.DATABASE_CONNECTION_FAILED_MSG);
+                return Collections.emptyList();
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 ResultSet rs = pstmt.executeQuery();
@@ -81,7 +87,9 @@ public class CompanyReadRepository {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Database error: " + e.getMessage(), e);
+            System.err.println("Database error occurred: " + e.getMessage());
+        } catch (RuntimeException e) {
+            System.err.println("Unexpected error: " + e.getMessage());
         }
         return Optional.ofNullable(allIdCompanies.isEmpty() ? null : allIdCompanies)
                 .orElse(Collections.emptyList());

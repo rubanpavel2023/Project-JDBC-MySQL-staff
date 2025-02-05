@@ -25,6 +25,8 @@ public class Constants {
     public static final String WRONG_NAME_COMPANY_MSG = "Invalid name format company. It must contain only letters or numbers," + "\n"
             + "start with an uppercase letter followed by lowercase letters";
     public static final String WRONG_ID_MSG = "Invalid company ID. It must be an integer.";
+    public static final String DATABASE_CONNECTION_FAILED_MSG = "Failed to establish database connection";
+
 }
 
 
