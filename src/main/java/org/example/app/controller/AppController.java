@@ -25,6 +25,7 @@ public class AppController {
             case 4 -> service.readCompany();
             case 5 -> service.updateEmployee();
             case 6 -> service.updateCompany();
+            case 7 -> service.deleteEmployee();
             case 8 -> service.deleteCompany();
             case 0 -> view.getOutput(Constants.APP_CLOSE_MSG);
             default -> service.getNoSuchOption(choice);

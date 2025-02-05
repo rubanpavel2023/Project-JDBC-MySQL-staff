@@ -53,7 +53,6 @@ public class AppService {
 
     }
 
-
     public void readCompany() {
         CompanyReadRepository repositoryRead = new CompanyReadRepository();
         CompanyReadView viewRead = new CompanyReadView();
@@ -79,6 +78,18 @@ public class AppService {
         CompanyDeleteService serviceDelete = new CompanyDeleteService(repositoryDelete, serviceRead);
         CompanyDeleteController controller = new CompanyDeleteController(serviceDelete);
         controller.deleteCompany();
+    }
+
+    public void deleteEmployee() {
+        EmployeeDeleteRepository repositoryDelete = new EmployeeDeleteRepository();
+        EmployeeReadRepository repositoryRead = new EmployeeReadRepository();
+        EmployeeReadView viewRead = new EmployeeReadView();
+        EmployeeReadService serviceRead = new EmployeeReadService(repositoryRead,viewRead);
+        EmployeeDeleteService serviceDelete = new EmployeeDeleteService(repositoryDelete,serviceRead);
+        EmployeeDeleteController controller = new EmployeeDeleteController(serviceDelete);
+        controller.deleteEmployee();
+
+
     }
 
 
