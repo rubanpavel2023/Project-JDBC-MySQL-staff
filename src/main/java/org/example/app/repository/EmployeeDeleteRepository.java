@@ -10,24 +10,30 @@ import java.sql.SQLException;
 
 
 public class EmployeeDeleteRepository {
-   /* public boolean deleteEmployeeByLastName(Employee employeeToDelete) {
+    public void deleteEmployeeByLastName(Employee employeeToDelete) {
         String sql = "DELETE FROM " + Constants.TABLE_EMPLOYEES + " WHERE last_Name = ? AND id_Employee = ?";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
+                System.err.println(Constants.DATABASE_CONNECTION_FAILED_MSG);
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, employeeToDelete.getLastName());
                 pstmt.setInt(2, employeeToDelete.getIdEmployee());
-
                 int rowsAffected = pstmt.executeUpdate();
-                System.out.print("Employee " + employeeToDelete.getLastName() +
-                        " has been successfully removed from the database");
-                return rowsAffected > 0;
+                if (rowsAffected > 0) {
+                    System.out.println("<Employee " + employeeToDelete.getLastName() +
+                            " has been successfully removed from the database>");
+                } else
+                    System.out.println("Employee not found. Please check the details and try again");
+
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Database error: " + e.getMessage(), e);
+            System.err.println("Database error occurred: " + e.getMessage());
+        } catch (RuntimeException e) {
+            System.err.println("Unexpected error: " + e.getMessage());
         }
-    }*/
+    }
+
 }
+
 

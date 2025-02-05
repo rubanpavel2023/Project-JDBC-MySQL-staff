@@ -12,11 +12,11 @@ public class EmployeeCreateRepository {
     public String createEmployee(Employee employeeToCreate) {
 
         String sql = "INSERT INTO " + Constants.TABLE_EMPLOYEES +
-                " (employees.first_Name, employees.last_Name, employees.position, employees.email, employees.id_Company) " +
+                " (first_Name, last_Name, position, email, id_Company) " +
                 "VALUES(?, ?, ?, ?, ?)";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
+                return Constants.DATABASE_CONNECTION_FAILED_MSG;
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, employeeToCreate.getFirstName());
@@ -28,7 +28,7 @@ public class EmployeeCreateRepository {
                 return Constants.DATA_EMPLOYEE_INSERT_MSG;
             }
         } catch (SQLException e) {
-            return e.getMessage();
+            return "Database error: " + e.getMessage();
         }
     }
 }

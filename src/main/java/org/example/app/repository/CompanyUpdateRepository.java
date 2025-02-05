@@ -15,7 +15,7 @@ public class CompanyUpdateRepository {
                 " SET name_Company = ? WHERE id_Company = ?";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
+                return Constants.DATABASE_CONNECTION_FAILED_MSG;
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, companyToUpdate.getNameCompany());
@@ -24,7 +24,11 @@ public class CompanyUpdateRepository {
                 return Constants.DATA_COMPANY_UPDATE_MSG;
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Database error: " + e.getMessage(), e);
+            System.err.println("Database error occurred: " + e.getMessage());
+            return "Database error occurred: " + e.getMessage();
+        } catch (RuntimeException e) {
+            System.err.println("Unexpected error: " + e.getMessage());
+            return "Unexpected error: " + e.getMessage();
         }
     }
 

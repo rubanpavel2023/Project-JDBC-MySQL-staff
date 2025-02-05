@@ -6,19 +6,15 @@ import org.example.app.entity.Company;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+
 
 public class CompanyDeleteRepository {
     public void deleteCompany(Company companyToDelete) {
         String sql = "DELETE FROM " + Constants.TABLE_COMPANIES + " WHERE name_Company = ? AND id_Company = ?";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
+                System.err.println(Constants.DATABASE_CONNECTION_FAILED_MSG);
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, companyToDelete.getNameCompany());
@@ -28,14 +24,17 @@ public class CompanyDeleteRepository {
                 if (rowsAffected > 0) {
                     System.out.println("<Company " + companyToDelete.getNameCompany() +
                             " has been successfully removed from the database>");
-                }
+                } else System.out.println("Company not found. Please check the details and try again");
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Database error occurred: " + e.getMessage());
+        } catch (RuntimeException e) {
+            System.err.println("Unexpected error: " + e.getMessage());
         }
-    }
 
+    }
 }
+
 
     /*public String deleteAllCompanies() {
         String sqlAll = "DELETE FROM " + Constants.TABLE_COMPANIES;

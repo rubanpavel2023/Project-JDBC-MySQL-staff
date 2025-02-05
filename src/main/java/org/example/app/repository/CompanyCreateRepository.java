@@ -15,7 +15,7 @@ public class CompanyCreateRepository {
                 " (name_Company) " + "VALUES(?)";
         try (Connection conn = DBConn.connect()) {
             if (conn == null) {
-                return "Failed to establish database connection";
+                return Constants.DATABASE_CONNECTION_FAILED_MSG;
             }
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, companyToCreate.getNameCompany());
