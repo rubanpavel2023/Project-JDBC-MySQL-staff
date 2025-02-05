@@ -19,7 +19,7 @@ public class EmployeeReadRepository {
 
     public List<Employee> readEmployeesByLastNameStartsWith(char initial) {
         List<Employee> employees = new ArrayList<>();
-        String sql = "SELECT id_Employee, first_Name, last_Name, position, email, id_Company, companies.name_Company " +
+        String sql = "SELECT id_Employee, employees.first_Name, employees.last_Name, employees.position, employees.email, employees.id_Company, companies.name_Company " +
                 "FROM employees " +
                 "JOIN companies ON employees.id_Company = companies.id_Company " +
                 "WHERE employees.last_Name LIKE ?";

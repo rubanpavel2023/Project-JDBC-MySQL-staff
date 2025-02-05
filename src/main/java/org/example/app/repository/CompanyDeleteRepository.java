@@ -36,27 +36,9 @@ public class CompanyDeleteRepository {
 }
 
 
+
+
     /*public String deleteAllCompanies() {
-        String sqlAll = "DELETE FROM " + Constants.TABLE_COMPANIES;
-        try (Connection conn = DBConn.connect()) {
-            if (conn == null) {
-                throw new RuntimeException("Failed to establish database connection");
-            }
-            try (PreparedStatement pstmt = conn.prepareStatement(sqlAll)) {
-                ResultSet rs = pstmt.executeQuery();
-                while (rs.next()) {
-                    Company company = new Company();
-                    pstmt.setString(1, companyToDelete.getNameCompany());
-                    pstmt.setInt(2, companyToDelete.getIdCompany());
+        String sqlAll = "DELETE FROM " + Constants.TABLE_COMPANIES;*/
 
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Database error: " + e.getMessage(), e);
-        }
-        return Optional.ofNullable(companies.isEmpty() ? null : companies)
-                .orElse(Collections.emptyList());
-
-    }
-}*/
 

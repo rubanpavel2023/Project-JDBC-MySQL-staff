@@ -1,7 +1,6 @@
 package org.example.app.exeptions;
 
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class CreateException extends RuntimeException {
     Map<String, String> errors;
