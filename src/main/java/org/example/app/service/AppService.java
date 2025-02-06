@@ -2,11 +2,14 @@ package org.example.app.service;
 
 import org.example.app.constants.Constants;
 import org.example.app.controller.*;
+import org.example.app.entity.Company;
 import org.example.app.exeptions.OptionException;
 import org.example.app.repository.*;
 
 import org.example.app.utils.AppStarter;
 import org.example.app.view.*;
+
+import java.util.List;
 
 
 public class AppService {
@@ -18,13 +21,15 @@ public class AppService {
         CompanyCreateController controller = new CompanyCreateController(serviceCreate, viewCreate);
         controller.createCompany();
     }
-
     public void createEmployee() {
-        EmployeeCreateRepository repository = new EmployeeCreateRepository();
-        EmployeeCreateService createService = new EmployeeCreateService(repository);
-        EmployeeCreateView viewCreate = new EmployeeCreateView();
-        EmployeeCreateController controller = new EmployeeCreateController(viewCreate, createService);
-        controller.createEmployee();
+        if (CheckingCompanyAvailability()) {
+            EmployeeCreateRepository repository = new EmployeeCreateRepository();
+            EmployeeCreateService createService = new EmployeeCreateService(repository);
+            EmployeeCreateView viewCreate = new EmployeeCreateView();
+            EmployeeCreateController controller = new EmployeeCreateController(viewCreate, createService);
+            controller.createEmployee();
+        }else System.out.println("At least one company must be created");
+        AppStarter.startApp();
 
     }
 
@@ -115,6 +120,16 @@ public class AppService {
             }
         }
         return result;
+    }
+
+    private boolean CheckingCompanyAvailability() {
+        CompanyReadRepository repository = new CompanyReadRepository();
+        List<Company> listCompany;
+        listCompany = repository.readAllCompanies();
+        if (!listCompany.isEmpty()) {
+            return true;
+        } else return false;
+
     }
 
 }
