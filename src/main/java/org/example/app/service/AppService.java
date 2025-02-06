@@ -123,17 +123,16 @@ public class AppService {
     }
 
     public static boolean containsId(List<Company> companies, int choiceId) {
-        boolean result = false;
         for (Company company : companies) {
             if (choiceId == company.getIdCompany()) {
-                result = true;
-                break;
-            }else {
-                System.out.println("The entered ID is not found \n");
+                return true;
             }
         }
-        return result;
+        System.out.println("The entered ID is not found \n");
+        return false;
     }
+
+
 
     private boolean CheckingCompanyAvailability() {
         CompanyReadRepository repository = new CompanyReadRepository();
