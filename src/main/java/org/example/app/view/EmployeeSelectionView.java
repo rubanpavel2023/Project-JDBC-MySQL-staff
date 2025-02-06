@@ -20,7 +20,7 @@ public class EmployeeSelectionView {
         }
         if (employees.size() == 1) {
             System.out.println("<Company according to your request: > \n" +
-                    ") First Name: " + employees.get(0).getFirstName() +
+                    " First Name: " + employees.get(0).getFirstName() +
                     ", Last Name: " + employees.get(0).getLastName() +
                     ", Position: " + employees.get(0).getPosition() +
                     ", Email: " + employees.get(0).getEmail() +

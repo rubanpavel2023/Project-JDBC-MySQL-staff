@@ -1,15 +1,10 @@
 package org.example.app.service;
 
 import org.example.app.constants.Constants;
-import org.example.app.entity.Company;
 import org.example.app.entity.Employee;
 import org.example.app.exeptions.CreateException;
-import org.example.app.repository.CompanyReadRepository;
 import org.example.app.repository.EmployeeCreateRepository;
 
-
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,7 +36,19 @@ public class EmployeeCreateService {
         Map<String, String> errors = new HashMap<>();
 
         if (data[0].isEmpty()) {
-            errors.put("Name", Constants.INPUT_REQ_MSG);
+            errors.put("First name ", Constants.INPUT_REQ_MSG);
+        }
+        if (data[1].isEmpty()) {
+            errors.put("Last name ", Constants.INPUT_REQ_MSG);
+        }
+        if (data[2].isEmpty()) {
+            errors.put("Position ", Constants.INPUT_REQ_MSG);
+        }
+        if (data[3].isEmpty()) {
+            errors.put("Email ", Constants.INPUT_REQ_MSG);
+        }
+        if (data[4].isEmpty()) {
+            errors.put("ID Company", Constants.INPUT_REQ_MSG);
         }
 
         return errors;
