@@ -2,12 +2,13 @@ package org.example.app.view;
 
 import org.example.app.constants.Constants;
 
+
 import java.util.Scanner;
 
 public class CompanyCreateView {
 
 
-    public String[] getData(){
+    public String[] getData() {
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -19,8 +20,8 @@ public class CompanyCreateView {
             } else {
                 System.out.println(Constants.WRONG_NAME_COMPANY_MSG);
             }
-        }
 
+        }
     }
 
 

@@ -26,4 +26,14 @@ public class CompanyReadView {
         }
     }
 
+    public static void getCompaniesInfoForSelect(List<Company> companies) {
+        StringBuilder stringBuilder = new StringBuilder();
+        companies.forEach(company -> stringBuilder.append("ID: ")
+                .append(company.getIdCompany())
+                .append(", Name Company: ")
+                .append(company.getNameCompany())
+                .append("\n"));
+        System.out.println(stringBuilder);
+    }
+
 }
