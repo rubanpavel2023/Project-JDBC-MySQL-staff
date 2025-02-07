@@ -9,6 +9,7 @@ public class Constants {
     public static final String DATA_EMPLOYEE_UPDATE_MSG = "<Data employee updated successfully>";
     public static final String SAME_NAME_ENTERED_MSG = "No changes found," + "\n" + "No database update required";
     public static final String INCORRECT_VALUE_MSG = " <<Incorrect value !>>";
+    public static final String INVALID_INTEGER_INPUT_MSG = "Invalid input. Please enter an integer";
     public static final String EMAIL_NOT_FOUND_MSG = "email missing";
     public static final String NOTHING_FOUND_MSG = "<Nothing found for your request> ";
     public static final String EMAIL_REGEX = "^[a-z0-9+_.-]+@(.+)$";
