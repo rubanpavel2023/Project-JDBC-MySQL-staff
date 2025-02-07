@@ -1,7 +1,9 @@
 package org.example.app.view;
 
 import org.example.app.constants.Constants;
-import org.example.app.service.EmployeeUpdateService;
+import org.example.app.entity.Company;
+import org.example.app.repository.CompanyReadRepository;
+import org.example.app.service.AppService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,8 @@ public class EmployeeUpdateView {
     private static Scanner scanner = new Scanner(System.in);
 
     public static String[] getNewDataEmployee() {
+        CompanyReadRepository repositoryRead = new CompanyReadRepository();
+        List<Company> companyList;
         List<String> list = new ArrayList<>();
         System.out.println("=> Enter new firstName employee: ");
         while (true) {
@@ -66,8 +70,10 @@ public class EmployeeUpdateView {
         }
 
 
-        System.out.println("=> Enter the new company ID assigned to the employee: ");
         while (true) {
+            System.out.println("=> Enter the new company ID assigned to the employee: " + "\n");
+            companyList = repositoryRead.readAllCompanies();
+            CompanyReadView.getCompaniesInfoForSelect(companyList);
             String idCompany = scanner.nextLine();
             try {
                 int parsedIdCompany = Integer.parseInt(idCompany);
@@ -76,7 +82,7 @@ public class EmployeeUpdateView {
                     System.out.println(Constants.WRONG_ID_MSG);
                     continue;
                 }
-                if (!EmployeeUpdateService.isCompanyIdExists(parsedIdCompany)) {
+                if (!AppService.containsId(companyList, parsedIdCompany)) {
                     System.out.println("<The company with the entered ID is not in the database>");
                 } else {
                     list.add(idCompany);
@@ -86,7 +92,7 @@ public class EmployeeUpdateView {
                 System.out.println(Constants.WRONG_ID_MSG);
             }
         }
-        return list.toArray(new String[5]);
+        return list.toArray(new String[0]);
     }
 
 

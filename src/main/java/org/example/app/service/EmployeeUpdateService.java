@@ -58,7 +58,8 @@ public class EmployeeUpdateService {
                     originalData[1].equals(employeeToUpdate.getLastName()) &&
                     originalData[2].equals(employeeToUpdate.getPosition()) &&
                     originalData[3].equals(employeeToUpdate.getEmail()) &&
-                    Integer.parseInt(data[4]) == employeeToUpdate.getIdCompany()) {
+                    originalData[4].equals(Integer.toString(employeeToUpdate.getIdCompany()))) {
+                //Integer.parseInt(originalData[4]) == employeeToUpdate.getIdCompany()) {
                 return null;
             }
         } catch (Exception ex) {
@@ -66,15 +67,18 @@ public class EmployeeUpdateService {
         }
         return employeeToUpdate;
     }
+}
 
-    public static boolean isCompanyIdExists(int idCompany) {
+
+
+/*    public static boolean isCompanyIdExists(int idCompany) {
         CompanyReadRepository repository = new CompanyReadRepository();
         List<Integer> idCompanies = new ArrayList();
         idCompanies = repository.readIdCompanies();
         if (idCompanies.contains(idCompany)) {
             return true;
         } else return false;
-    }
-}
+    }*/
+
 
 
