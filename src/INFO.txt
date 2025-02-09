@@ -1,23 +1,24 @@
 USE employees_db;
-CREATE TABLE IF NOT EXISTS employees (
-id_Employee BIGINT NOT NULL AUTO_INCREMENT,
-first_name VARCHAR(255) NOT NULL,
-last_name VARCHAR(255) NOT NULL,
-position VARCHAR (255) NOT NULL,
-email VARCHAR(255) NOT NULL,
-id_Company BIGINT (255) NOT NULL,
-PRIMARY KEY (id_Employee)
-);
-
-ALTER TABLE employees
-ADD CONSTRAINT fk_company
-FOREIGN KEY (id_Company) REFERENCES companies(id_Company);
-
-
-USE employees_db;
-CREATE TABLE IF NOT EXISTS companies (
-id_Company BIGINT NOT NULL AUTO_INCREMENT,
-name_Company VARCHAR(255) NOT NULL,
-PRIMARY KEY (id_Company)
-);
-
+ CREATE TABLE IF NOT EXISTS employees (
+ id_Employee BIGINT NOT NULL AUTO_INCREMENT,
+ first_name VARCHAR(255) NOT NULL,
+ last_name VARCHAR(255) NOT NULL,
+ position VARCHAR (255) NOT NULL,
+ email VARCHAR(255) NOT NULL,
+ id_Company BIGINT (255) NOT NULL,
+ PRIMARY KEY (id_Employee)
+ );
+ 
+ ALTER TABLE employees
+ ADD CONSTRAINT fk_company
+ FOREIGN KEY (id_Company) REFERENCES companies(id_Company);
+ 
+ 
+ USE employees_db;
+ CREATE TABLE IF NOT EXISTS companies (
+ id_Company BIGINT NOT NULL AUTO_INCREMENT,
+ name_Company VARCHAR(255) NOT NULL,
+ PRIMARY KEY (id_Company)
+ );
+ 
+ 
