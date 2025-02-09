@@ -20,3 +20,4 @@ id_Company BIGINT NOT NULL AUTO_INCREMENT,
 name_Company VARCHAR(255) NOT NULL,
 PRIMARY KEY (id_Company)
 );
+
